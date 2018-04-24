@@ -1,0 +1,5 @@
+/addons.make
+/config.make
+/Makefile
+/obj/*
+/..qbs
