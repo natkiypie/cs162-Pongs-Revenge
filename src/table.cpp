@@ -11,7 +11,7 @@ void tableLine(int x1, int y1, int x2, int y2) {
 void tableDraw(int distance) {
   tableLine(distance, distance, distance, (ofGetHeight() - distance));
   tableLine((ofGetWidth() - distance), (ofGetHeight() - distance), (ofGetWidth() - distance), distance);
-  tableLine(distance, (distance + (LINE_WIDTH / 2)), (ofGetWidth() - distance), (distance + (LINE_WIDTH / 2)));
-  tableLine(distance, (ofGetHeight() - (distance + (LINE_WIDTH / 2))), (ofGetWidth() - distance), (ofGetHeight() - (distance + (LINE_WIDTH / 2))));
-  tableLine((ofGetWidth() / 2), distance, (ofGetWidth() / 2), (ofGetHeight() - distance));
+  tableLine((distance - (LINE_WIDTH / 2)), (distance + (LINE_WIDTH / 2)), (ofGetWidth() - (distance - (LINE_WIDTH / 2))), (distance + (LINE_WIDTH / 2)));
+  tableLine((distance - (LINE_WIDTH / 2)), (ofGetHeight() - (distance + (LINE_WIDTH / 2))), (ofGetWidth() - distance + (LINE_WIDTH / 2)), (ofGetHeight() - (distance + (LINE_WIDTH / 2))));
+  tableLine((ofGetWidth() / 2), (distance + LINE_WIDTH), (ofGetWidth() / 2), (ofGetHeight() - (distance + LINE_WIDTH)));
 }

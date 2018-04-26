@@ -3,7 +3,7 @@
 #include "Player.h"
 
 void ofApp::setup() {
-  ofSetBackgroundColor(10, 34, 71);
+  ofSetBackgroundColor(0, 0, 0);
   player = new Player();
 }
 
