@@ -24,10 +24,12 @@ void Player::draw() {
 }
 
 void Player::move() {
-  if (ofGetMouseX() == 0) {
+  if (ofGetMouseX() == 0 || ofGetMouseY() == 0) {
     this->xt = (ofGetWidth() / 2);
+    this->yt = (ofGetHeight() - 160);
   } else {
     this->xt = ofGetMouseX();
+    this->yt = ofGetMouseY();
   }
 }
 
@@ -42,7 +44,11 @@ void Player::right() {
 void Player::atBoundry() {
   if ((this->xt - (this->w / 2)) <= 0) {
     this->xt = (0 + (this->w / 2));
-  } else if (this->xt >= ofGetWidth() - (this->w / 2)) {
+  } else if (this->xt >= (ofGetWidth() - (this->w / 2))) {
     this->xt = (ofGetWidth() - (this->w / 2));
+  } else if (this->yt <= (ofGetHeight() - 160)) {
+    this->yt = (ofGetHeight() - 160);
+  } else if (this->yt >= (ofGetHeight() - (this->h / 2))) {
+    this->yt = (ofGetHeight() - (this->h / 2));
   }
 }
