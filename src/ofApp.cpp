@@ -1,8 +1,9 @@
 #include "ofApp.h"
+#include "table.h"
 #include "Player.h"
 
 void ofApp::setup() {
-  ofSetBackgroundColor(0, 0, 0);
+  ofSetBackgroundColor(10, 34, 71);
   player = new Player();
 }
 
@@ -13,6 +14,7 @@ void ofApp::update() {
 
 void ofApp::draw() {
   player->draw();
+  tableDraw(20);
 }
 
 void ofApp::keyPressed(int key) {

@@ -8,11 +8,12 @@ Player::Player() {
   this->w = 60;
   this->h = 8;
   this->d = 0;
-  this->ps = 6;
+  this->ps = 8;
   this->color = ofColor(255, 255, 255);
 }
 
 void Player::draw() {
+  ofFill();
   ofSetColor(this->color);
   ofPushMatrix();
   ofTranslate(this->xt, this->yt);
@@ -31,11 +32,11 @@ void Player::move() {
 }
 
 void Player::left() {
-  this->d -= ps;
+  this->d -= this->ps;
 }
 
 void Player::right() {
-  this->d += ps;
+  this->d += this->ps;
 }
 
 void Player::atBoundry() {
