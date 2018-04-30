@@ -2,11 +2,13 @@
 
 #include "ofMain.h"
 #include "Player.h"
+#include "Ball.h"
 
 class ofApp : public ofBaseApp {
 
 	public:
     Player* player;
+    Ball* ball;
 		void setup();
 		void update();
 		void draw();

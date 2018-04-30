@@ -67,3 +67,4 @@ void print_values(Player* player) {
   ofDrawBitmapString("paddle angle: ", 40, (ofGetHeight() - 40));
   ofDrawBitmapString(ofToString(player->getD()), 150, (ofGetHeight() - 40));
 }
+

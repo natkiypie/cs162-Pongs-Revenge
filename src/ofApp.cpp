@@ -1,10 +1,12 @@
 #include "ofApp.h"
 #include "table.h"
 #include "Player.h"
+#include "Ball.h"
 
 void ofApp::setup() {
   ofSetBackgroundColor(0, 0, 0);
   player = new Player();
+  ball = new Ball();
 }
 
 void ofApp::update() {
@@ -14,7 +16,10 @@ void ofApp::update() {
 
 void ofApp::draw() {
   player->draw();
+  ball->draw();
+
   tableDraw(20);
+
   print_values(player);
 }
 
