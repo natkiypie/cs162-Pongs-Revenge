@@ -15,6 +15,7 @@ void ofApp::update() {
 void ofApp::draw() {
   player->draw();
   tableDraw(20);
+  print_values(player);
 }
 
 void ofApp::keyPressed(int key) {
@@ -22,6 +23,10 @@ void ofApp::keyPressed(int key) {
     player->left();
   } else if (key == 'd') {
     player->right();
+  }
+
+  if (key == ' ') {
+    player->storeAngle();
   }
 }
 

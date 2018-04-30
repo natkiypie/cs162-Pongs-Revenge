@@ -9,6 +9,7 @@ Player::Player() {
   this->h = 8;
   this->d = 0;
   this->ps = 8;
+  this->ball = 0;
   this->color = ofColor(255, 255, 255);
 }
 
@@ -51,4 +52,18 @@ void Player::atBoundry() {
   } else if (this->yt >= (ofGetHeight() - (this->h / 2))) {
     this->yt = (ofGetHeight() - (this->h / 2));
   }
+}
+
+float Player::getD() {
+  return this->ball;
+}
+
+void Player::storeAngle() {
+  this->ball = this->d;
+}
+
+void print_values(Player* player) {
+  ofSetColor(255, 255, 255);
+  ofDrawBitmapString("paddle angle: ", 40, (ofGetHeight() - 40));
+  ofDrawBitmapString(ofToString(player->getD()), 150, (ofGetHeight() - 40));
 }

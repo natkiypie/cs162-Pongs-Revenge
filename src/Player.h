@@ -11,6 +11,8 @@ class Player {
     void left();
     void right();
     void atBoundry();
+    float getD();
+    void storeAngle();
 
   private:
     int x;
@@ -21,5 +23,8 @@ class Player {
     int h;
     int ps;
     float d;
+    float ball;
     ofColor color;
 };
+
+void print_values();
