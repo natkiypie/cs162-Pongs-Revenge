@@ -32,9 +32,9 @@ void ofApp::keyPressed(int key) {
     player->right();
   }
 
-  if (key == ' ') {
-    player->storeAngle();
-  }
+//  if (key == ' ') {
+//    player->setAngle();
+//  }
 }
 
 void ofApp::keyReleased(int key) {

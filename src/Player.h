@@ -11,18 +11,16 @@ class Player {
     void left();
     void right();
     void atBoundry();
-    float getD();
-    void storeAngle();
+    float getAngle();
+    void setAngle();
 
   private:
-    int x;
-    int y;
-    int xt;
-    int yt;
-    int w;
-    int h;
-    int ps;
-    float d;
+    ofVec2f position;
+    ofVec2f translation;
+    int width;
+    int height;
+    int size;
+    float degree;
     float ball;
     ofColor color;
 };

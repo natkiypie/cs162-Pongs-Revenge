@@ -1,6 +1,8 @@
 #include "ofMain.h"
 #include "Ball.h"
 
+//float Player::getAngle(Player* player);
+
 Ball::Ball() {
   this->position = ofVec2f((ofGetWidth()/2), (ofGetHeight()/2));
   this->velocity = ofVec2f(2, 2);
@@ -22,5 +24,6 @@ void Ball::move() {
     this->velocity.x *= -1;
   } else if (this->position.y <= 0 || this->position.y >= ofGetHeight()){
     this->velocity.y *= -1;
+//    this->velocity.getRotated(45);
   }
 }
