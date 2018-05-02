@@ -12,7 +12,7 @@ class Ball {
   private:
     ofVec2f position;
     ofVec2f velocity;
-    int w;
-    int h;
+    int width;
+    int height;
     ofColor color;
 };
