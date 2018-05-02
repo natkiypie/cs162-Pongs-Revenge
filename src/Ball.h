@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ofMain.h"
+
 class Ball {
 
   public:
@@ -8,8 +10,8 @@ class Ball {
     void move();
 
   private:
-    int x;
-    int y;
+    ofVec2f position;
+    ofVec2f velocity;
     int w;
     int h;
     ofColor color;

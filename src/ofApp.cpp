@@ -12,6 +12,8 @@ void ofApp::setup() {
 void ofApp::update() {
   player->move();
   player->atBoundry();
+  
+  ball->move();
 }
 
 void ofApp::draw() {
