@@ -11,18 +11,15 @@ class Player {
     void left();
     void right();
     void atBoundry();
-    float getAngle();
-    void setAngle();
+    bool rectInside(ofVec2f ball);
 
   private:
     ofVec2f position;
-    ofVec2f translation;
     int width;
     int height;
-    int size;
+    int speed;
     float degree;
-    float ball;
+    float ballAngle;
     ofColor color;
+    ofRectangle rect;
 };
-
-void print_values();

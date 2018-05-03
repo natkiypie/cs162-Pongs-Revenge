@@ -1,5 +1,4 @@
 #include "ofApp.h"
-#include "table.h"
 #include "Player.h"
 #include "Ball.h"
 
@@ -14,27 +13,18 @@ void ofApp::update() {
   player->atBoundry();
   
   ball->move();
+
+  if (player->rectInside(ball->getPosition()) == true) {
+    ball->bounce();
+  }
 }
 
 void ofApp::draw() {
   player->draw();
   ball->draw();
-
-  tableDraw(20);
-
-  print_values(player);
 }
 
 void ofApp::keyPressed(int key) {
-  if (key == 'a') {
-    player->left();
-  } else if (key == 'd') {
-    player->right();
-  }
-
-//  if (key == ' ') {
-//    player->setAngle();
-//  }
 }
 
 void ofApp::keyReleased(int key) {

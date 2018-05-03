@@ -8,11 +8,14 @@ class Ball {
     Ball();
     void draw();
     void move();
+    ofVec2f getPosition();
+    void bounce();
 
   private:
     ofVec2f position;
     ofVec2f velocity;
     int width;
     int height;
+    float degree;
     ofColor color;
 };

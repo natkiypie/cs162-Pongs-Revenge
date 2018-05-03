@@ -26,5 +26,3 @@ class ofApp : public ofBaseApp {
 		void gotMessage(ofMessage msg);
 		
 };
-
-void print_values(Player* player);
