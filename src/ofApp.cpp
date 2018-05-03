@@ -1,16 +1,21 @@
 #include "ofApp.h"
 #include "Player.h"
+#include "Opponent.h"
 #include "Ball.h"
 
 void ofApp::setup() {
   ofSetBackgroundColor(0, 0, 0);
   player = new Player();
+  opponent = new Opponent();
   ball = new Ball();
 }
 
 void ofApp::update() {
   player->move();
   player->atBoundry();
+
+  opponent->move();
+  opponent->atBoundry();
   
   ball->move();
 
@@ -22,6 +27,7 @@ void ofApp::update() {
 
 void ofApp::draw() {
   player->draw();
+  opponent->draw();
   ball->draw();
 
 //  float dist = ofDist(player->getX(), player->getY(), ball->getX(), ball->getY());

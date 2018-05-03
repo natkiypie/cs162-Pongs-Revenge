@@ -1,5 +1,6 @@
-obj/linux64/Release/src/main.o: \
- /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/main.cpp \
+obj/linux64/Release/src/Opponent.o: \
+ /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Opponent.cpp \
+ /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Opponent.h \
  /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/ofMain.h \
  /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/utils/ofConstants.h \
  /home/natkiypie/Cs/cs161/OF/libs/tess2/include/tesselator.h \
@@ -516,11 +517,9 @@ obj/linux64/Release/src/main.o: \
  /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/video/ofGstVideoPlayer.h \
  /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/3d/of3dUtils.h \
  /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/3d/ofCamera.h \
- /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/3d/ofEasyCam.h \
- /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/ofApp.h \
- /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Player.h \
- /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Opponent.h \
- /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Ball.h
+ /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/3d/ofEasyCam.h
+
+/home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Opponent.h:
 
 /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/ofMain.h:
 
@@ -1587,11 +1586,3 @@ obj/linux64/Release/src/main.o: \
 /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/3d/ofCamera.h:
 
 /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/3d/ofEasyCam.h:
-
-/home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/ofApp.h:
-
-/home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Player.h:
-
-/home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Opponent.h:
-
-/home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Ball.h:
