@@ -16,6 +16,5 @@ class Ball {
     ofVec2f velocity;
     int width;
     int height;
-    float degree;
     ofColor color;
 };

@@ -6,7 +6,6 @@ Ball::Ball() {
   this->velocity = ofVec2f(4, 4);
   this->width = 8;
   this->height = 8;
-  this->degree = 0;
   this->color = ofColor(255, 255, 255);
 }
 
@@ -31,5 +30,5 @@ ofVec2f Ball::getPosition() {
 }
 
 void Ball::bounce() {
-  this->velocity.y *= -1;
+  this->velocity.x *= -1;
 }

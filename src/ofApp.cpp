@@ -22,12 +22,26 @@ void ofApp::update() {
 void ofApp::draw() {
   player->draw();
   ball->draw();
+
+//  ofSetColor(255, 255, 255);
+//  ofDrawBitmapString("frame rate: ", 40, (ofGetHeight() - 40));
+//  ofDrawBitmapString(ofToString(ofGetFrameRate()), 150, (ofGetHeight() - 40));
 }
 
 void ofApp::keyPressed(int key) {
+  if (key == OF_KEY_UP) {
+    player->up();
+  } else if (key == OF_KEY_DOWN) {
+    player->down();
+  }
 }
 
 void ofApp::keyReleased(int key) {
+  if (key == OF_KEY_UP) {
+    player->release();
+  } else if (key == OF_KEY_DOWN) {
+    player->release();
+  }
 }
 
 void ofApp::mouseMoved(int x, int y ) {

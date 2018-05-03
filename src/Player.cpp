@@ -1,12 +1,12 @@
 #include "Player.h"
 
 Player::Player() {
-  this->position = ofVec2f(ofGetMouseX(), (ofGetHeight() - 100));
-  this->width = 60;
-  this->height = 8;
-  this->degree = 0;
-  this->speed = 8;
-  this->ballAngle = 0;
+  this->position = ofVec2f(100, (ofGetHeight() / 2));
+  this->width = 8;
+  this->height = 60;
+  this->velocity = 0;
+  this->acceleration = 6;
+  this->speed = 6;
   this->color = ofColor(255, 255, 255);
   this->rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
 }
@@ -18,32 +18,37 @@ void Player::draw() {
 }
 
 void Player::move() {
-  this->position.x = ofGetMouseX();
+  this->position.y += this->velocity;
+  this->velocity *= 0.99;
 }
 
-void Player::left() {
-  this->position.x -= this->speed;
+void Player::up() {
+  this->velocity -= this->acceleration;
+  if(this->velocity <= -(this->speed)) {
+    this->velocity = -(this->speed);
+  }
 }
 
-void Player::right() {
-  this->position.x += this->speed;
+void Player::down() {
+  this->velocity += this->acceleration;
+  if(this->velocity >= this->speed) {
+    this->velocity = this->speed;
+  }
+}
+
+void Player::release() {
+  this->velocity = 0;
 }
 
 void Player::atBoundry() {
-  if ((this->position.x - (this->width / 2)) <= 0) {
-    this->position.x = (0 + (this->width / 2));
-  } else if (this->position.x >= (ofGetWidth() - (this->width / 2))) {
-    this->position.x = (ofGetWidth() - (this->width / 2));
+  if ((this->position.y - (this->height / 2)) <= 0) {
+    this->position.y = (0 + (this->height / 2));
+  } else if (this->position.y >= (ofGetHeight() - (this->height / 2))) {
+    this->position.y = (ofGetHeight() - (this->height / 2));
   }
 }
 
 bool Player::rectInside(ofVec2f ball) {
   rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
-  if (rect.inside(ball) == true) {
-    this->color = ofColor(255, 0, 0);
-    return true;
-  } else {
-    this->color = ofColor(255, 255, 255);
-    return false;
-  }
+  return rect.inside(ball) == true;
 }

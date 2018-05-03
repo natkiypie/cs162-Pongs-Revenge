@@ -8,8 +8,9 @@ class Player {
     Player();
     void draw();
     void move();
-    void left();
-    void right();
+    void up();
+    void down();
+    void release();
     void atBoundry();
     bool rectInside(ofVec2f ball);
 
@@ -17,9 +18,9 @@ class Player {
     ofVec2f position;
     int width;
     int height;
+    float velocity;
+    float acceleration;
     int speed;
-    float degree;
-    float ballAngle;
     ofColor color;
     ofRectangle rect;
 };
