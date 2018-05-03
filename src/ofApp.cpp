@@ -14,18 +14,20 @@ void ofApp::update() {
   
   ball->move();
 
-  if (player->rectInside(ball->getPosition()) == true) {
+  if (player->rectInside(ball->getBall()) == true) {
     ball->bounce();
   }
+
 }
 
 void ofApp::draw() {
   player->draw();
   ball->draw();
 
+//  float dist = ofDist(player->getX(), player->getY(), ball->getX(), ball->getY());
 //  ofSetColor(255, 255, 255);
-//  ofDrawBitmapString("frame rate: ", 40, (ofGetHeight() - 40));
-//  ofDrawBitmapString(ofToString(ofGetFrameRate()), 150, (ofGetHeight() - 40));
+//  ofDrawBitmapString("Distance: ", 40, (ofGetHeight() - 40));
+//  ofDrawBitmapString(ofToString(), 40, (ofGetHeight() - 20));
 }
 
 void ofApp::keyPressed(int key) {

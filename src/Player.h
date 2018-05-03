@@ -12,15 +12,14 @@ class Player {
     void down();
     void release();
     void atBoundry();
-    bool rectInside(ofVec2f ball);
+    bool rectInside(ofRectangle ball);
 
   private:
     ofVec2f position;
     int width;
     int height;
     float velocity;
-    float acceleration;
+    int acceleration;
     int speed;
     ofColor color;
-    ofRectangle rect;
 };

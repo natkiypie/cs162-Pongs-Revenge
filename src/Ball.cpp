@@ -4,8 +4,8 @@
 Ball::Ball() {
   this->position = ofVec2f((ofGetWidth()/2), (ofGetHeight()/2));
   this->velocity = ofVec2f(4, 4);
-  this->width = 8;
-  this->height = 8;
+  this->width = 10;
+  this->height = 10;
   this->color = ofColor(255, 255, 255);
 }
 
@@ -17,7 +17,7 @@ void Ball::draw() {
 }
 
 void Ball::move() {
-  this->position += this->velocity;
+  this->position -= this->velocity;
   if (this->position.x <= 0 || this->position.x >= ofGetWidth()) {
     this->velocity.x *= -1;
   } else if (this->position.y <= 0 || this->position.y >= ofGetHeight()) {
@@ -25,10 +25,11 @@ void Ball::move() {
   }
 }
 
-ofVec2f Ball::getPosition() {
-  return this->position;
+void Ball::bounce() {
+  this->velocity *= -1;
 }
 
-void Ball::bounce() {
-  this->velocity.x *= -1;
+ofRectangle Ball::getBall() {
+  ofRectangle rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
+  return rect;
 }

@@ -2,19 +2,18 @@
 
 Player::Player() {
   this->position = ofVec2f(100, (ofGetHeight() / 2));
-  this->width = 8;
+  this->width = 10;
   this->height = 60;
   this->velocity = 0;
   this->acceleration = 6;
   this->speed = 6;
   this->color = ofColor(255, 255, 255);
-  this->rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
 }
 
 void Player::draw() {
   ofFill();
   ofSetColor(this->color);
-  ofDrawRectangle(this->rect);
+  ofDrawRectangle(this->position.x, this->position.y, this->width, this->height);
 }
 
 void Player::move() {
@@ -48,7 +47,7 @@ void Player::atBoundry() {
   }
 }
 
-bool Player::rectInside(ofVec2f ball) {
-  rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
-  return rect.inside(ball) == true;
+bool Player::rectInside(ofRectangle ball) {
+  ofRectangle rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
+  return rect.intersects(ball) == true;
 }

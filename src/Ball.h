@@ -8,8 +8,8 @@ class Ball {
     Ball();
     void draw();
     void move();
-    ofVec2f getPosition();
     void bounce();
+    ofRectangle getBall();
 
   private:
     ofVec2f position;
