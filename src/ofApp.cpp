@@ -13,21 +13,14 @@ void ofApp::setup() {
 void ofApp::update() {
   player->move();
   player->atBoundry();
+  player->rectInside(ball);
 
   opponent->move();
   opponent->atBoundry();
   opponent->track(ball);
+  opponent->rectInside(ball);
 
   ball->move();
-
-  if (player->rectInside(ball->getBall()) == true) {
-    ball->bounce();
-  }
-
-  if (opponent->rectInside(ball->getBall()) == true) {
-    ball->bounce();
-  }
-
 }
 
 void ofApp::draw() {

@@ -7,7 +7,7 @@ Opponent::Opponent() {
   this->height = 60;
   this->velocity = 0;
   this->acceleration = 6;
-  this->speed = 4;
+  this->speed = 6;
   this->color = ofColor(255, 255, 255);
 }
 
@@ -34,11 +34,6 @@ void Opponent::atBoundry() {
   }
 }
 
-bool Opponent::rectInside(ofRectangle ball) {
-  ofRectangle rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
-  return rect.intersects(ball) == true;
-}
-
 void Opponent::track(Ball* ball) {
   float dirY = (ball->getY() - this->position.y);
   float dist = ofDist(this->position.x, this->position.y, ball->getX(), ball->getY());
@@ -51,3 +46,9 @@ void Opponent::track(Ball* ball) {
   }
 }
 
+void Opponent::rectInside(Ball* ball) {
+  ofRectangle rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
+  if (rect.intersects(ball->getBall()) == true) {
+    ball->bounce();
+  }
+}

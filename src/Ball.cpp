@@ -3,7 +3,8 @@
 
 Ball::Ball() {
   this->position = ofVec2f((ofGetWidth()/2), (ofGetHeight()/2));
-  this->velocity = ofVec2f(4, 4);
+  this->speed = 6;
+  this->velocity = ofVec2f(this->speed, this->speed);
   this->width = 10;
   this->height = 10;
   this->color = ofColor(255, 255, 255);

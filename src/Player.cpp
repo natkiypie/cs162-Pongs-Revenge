@@ -47,7 +47,10 @@ void Player::atBoundry() {
   }
 }
 
-bool Player::rectInside(ofRectangle ball) {
+void Player::rectInside(Ball* ball) {
   ofRectangle rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
-  return rect.intersects(ball) == true;
+  if (rect.intersects(ball->getBall()) == true) {
+    ball->bounce();
+  }
 }
+

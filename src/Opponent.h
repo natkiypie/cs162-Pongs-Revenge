@@ -11,8 +11,8 @@ class Opponent {
     void move();
     void release();
     void atBoundry();
-    bool rectInside(ofRectangle ball);
     void track(Ball* ball);
+    void rectInside(Ball* ball);
     
   private:
     ofVec2f position;

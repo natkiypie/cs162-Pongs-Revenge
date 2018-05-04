@@ -15,6 +15,7 @@ class Ball {
 
   private:
     ofVec2f position;
+    int speed;
     ofVec2f velocity;
     int width;
     int height;

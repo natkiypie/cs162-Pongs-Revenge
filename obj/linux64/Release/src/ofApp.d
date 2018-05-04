@@ -519,8 +519,8 @@ obj/linux64/Release/src/ofApp.o: \
  /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/3d/ofCamera.h \
  /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/3d/ofEasyCam.h \
  /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Player.h \
- /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Opponent.h \
- /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Ball.h
+ /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Ball.h \
+ /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Opponent.h
 
 /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/ofApp.h:
 
@@ -1592,6 +1592,6 @@ obj/linux64/Release/src/ofApp.o: \
 
 /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Player.h:
 
-/home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Opponent.h:
-
 /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Ball.h:
+
+/home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Opponent.h:

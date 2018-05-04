@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "Ball.h"
 
 class Player {
 
@@ -12,7 +13,7 @@ class Player {
     void down();
     void release();
     void atBoundry();
-    bool rectInside(ofRectangle ball);
+    void rectInside(Ball* ball);
 
   private:
     ofVec2f position;
