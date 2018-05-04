@@ -517,7 +517,8 @@ obj/linux64/Release/src/Opponent.o: \
  /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/video/ofGstVideoPlayer.h \
  /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/3d/of3dUtils.h \
  /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/3d/ofCamera.h \
- /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/3d/ofEasyCam.h
+ /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/3d/ofEasyCam.h \
+ /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Ball.h
 
 /home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Opponent.h:
 
@@ -1586,3 +1587,5 @@ obj/linux64/Release/src/Opponent.o: \
 /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/3d/ofCamera.h:
 
 /home/natkiypie/Cs/cs161/OF/libs/openFrameworks/3d/ofEasyCam.h:
+
+/home/natkiypie/Cs/cs161/OF/apps/myApps/cs162/PongsRevenge/src/Ball.h:

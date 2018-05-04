@@ -16,10 +16,15 @@ void ofApp::update() {
 
   opponent->move();
   opponent->atBoundry();
-  
+  opponent->track(ball);
+
   ball->move();
 
   if (player->rectInside(ball->getBall()) == true) {
+    ball->bounce();
+  }
+
+  if (opponent->rectInside(ball->getBall()) == true) {
     ball->bounce();
   }
 
@@ -34,6 +39,7 @@ void ofApp::draw() {
 //  ofSetColor(255, 255, 255);
 //  ofDrawBitmapString("Distance: ", 40, (ofGetHeight() - 40));
 //  ofDrawBitmapString(ofToString(), 40, (ofGetHeight() - 20));
+//
 }
 
 void ofApp::keyPressed(int key) {

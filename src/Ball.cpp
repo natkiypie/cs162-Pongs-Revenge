@@ -29,6 +29,14 @@ void Ball::bounce() {
   this->velocity *= -1;
 }
 
+float Ball::getX() {
+  return this->position.x;
+}
+
+float Ball::getY() {
+  return this->position.y;
+}
+
 ofRectangle Ball::getBall() {
   ofRectangle rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
   return rect;

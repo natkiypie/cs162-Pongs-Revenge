@@ -9,6 +9,8 @@ class Ball {
     void draw();
     void move();
     void bounce();
+    float getX();
+    float getY();
     ofRectangle getBall();
 
   private:

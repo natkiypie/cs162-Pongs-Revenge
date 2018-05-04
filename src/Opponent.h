@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "Ball.h"
 
 class Opponent {
   
@@ -8,11 +9,10 @@ class Opponent {
     Opponent();
     void draw();
     void move();
-    void up();
-    void down();
     void release();
     void atBoundry();
     bool rectInside(ofRectangle ball);
+    void track(Ball* ball);
     
   private:
     ofVec2f position;

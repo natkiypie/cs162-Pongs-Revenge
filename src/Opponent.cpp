@@ -7,7 +7,7 @@ Opponent::Opponent() {
   this->height = 60;
   this->velocity = 0;
   this->acceleration = 6;
-  this->speed = 6;
+  this->speed = 4;
   this->color = ofColor(255, 255, 255);
 }
 
@@ -20,20 +20,6 @@ void Opponent::draw() {
 void Opponent::move() {
   this->position.y += this->velocity;
   this->velocity *= 0.99;
-}
-
-void Opponent::up() {
-  this->velocity -= this->acceleration;
-  if(this->velocity <= -(this->speed)) {
-    this->velocity = -(this->speed);
-  }
-}
-
-void Opponent::down() {
-  this->velocity += this->acceleration;
-  if(this->velocity >= this->speed) {
-    this->velocity = this->speed;
-  }
 }
 
 void Opponent::release() {
@@ -52,3 +38,16 @@ bool Opponent::rectInside(ofRectangle ball) {
   ofRectangle rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
   return rect.intersects(ball) == true;
 }
+
+void Opponent::track(Ball* ball) {
+  float dirY = (ball->getY() - this->position.y);
+  float dist = ofDist(this->position.x, this->position.y, ball->getX(), ball->getY());
+  dirY /= dist;
+  this->velocity += dirY *= this->acceleration;
+  if(this->velocity <= -(this->speed)) {
+    this->velocity = -(this->speed);
+  } else if(this->velocity >= this->speed) {
+    this->velocity = this->speed;
+  }
+}
+
