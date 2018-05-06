@@ -13,6 +13,7 @@ Player::Player() {
 void Player::draw() {
   ofFill();
   ofSetColor(this->color);
+  ofSetRectMode(OF_RECTMODE_CENTER);
   ofDrawRectangle(this->position.x, this->position.y, this->width, this->height);
 }
 
@@ -53,4 +54,3 @@ void Player::rectInside(Ball* ball) {
     ball->bounce();
   }
 }
-

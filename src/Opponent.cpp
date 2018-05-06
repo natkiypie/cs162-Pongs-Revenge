@@ -1,6 +1,5 @@
 #include "Opponent.h"
 
-
 Opponent::Opponent() {
   this->position = ofVec2f((ofGetWidth() - 100), (ofGetHeight() / 2));
   this->width = 10;
@@ -14,6 +13,7 @@ Opponent::Opponent() {
 void Opponent::draw() {
   ofFill();
   ofSetColor(this->color);
+  ofSetRectMode(OF_RECTMODE_CENTER);
   ofDrawRectangle(this->position.x, this->position.y, this->width, this->height);
 }
 
@@ -22,8 +22,28 @@ void Opponent::move() {
   this->velocity *= 0.99;
 }
 
-void Opponent::release() {
-  this->velocity = 0;
+void Opponent::up() {
+  this->velocity -= this->acceleration;
+  if (this->velocity <= -(this->speed)) {
+    this->velocity = -(this->speed);
+  }
+}
+
+void Opponent::down() {
+  this->velocity += this->acceleration;
+  if (this->velocity >= this->speed) {
+    this->velocity = this->speed;
+  }
+}
+
+void Opponent::center() {
+  if (this->position.y <= ((ofGetHeight() / 2) - 2)) {
+    this->down();
+  } else if (this->position.y >= ((ofGetHeight() / 2) + 2)) {
+    this->up();
+  } else {
+    this->velocity = 0;
+  }
 }
 
 void Opponent::atBoundry() {
@@ -34,11 +54,19 @@ void Opponent::atBoundry() {
   }
 }
 
+void Opponent::inPossession(Ball* ball) {
+  if (ball->getX() >= (ofGetWidth() / 2)) {
+    this->track(ball);
+  } else {
+    this->center();
+  }
+}
+
 void Opponent::track(Ball* ball) {
-  float dirY = (ball->getY() - this->position.y);
-  float dist = ofDist(this->position.x, this->position.y, ball->getX(), ball->getY());
-  dirY /= dist;
-  this->velocity += dirY *= this->acceleration;
+  float direction = (ball->getY() - this->position.y);
+  float distance = ofDist(this->position.x, this->position.y, ball->getX(), ball->getY());
+  direction /= distance;
+  this->velocity += direction *= this->acceleration;
   if(this->velocity <= -(this->speed)) {
     this->velocity = -(this->speed);
   } else if(this->velocity >= this->speed) {

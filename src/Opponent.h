@@ -9,8 +9,11 @@ class Opponent {
     Opponent();
     void draw();
     void move();
-    void release();
+    void up();
+    void down();
+    void center();
     void atBoundry();
+    void inPossession(Ball* ball);
     void track(Ball* ball);
     void rectInside(Ball* ball);
     

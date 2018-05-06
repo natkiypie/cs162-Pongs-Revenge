@@ -17,8 +17,8 @@ void ofApp::update() {
 
   opponent->move();
   opponent->atBoundry();
-  opponent->track(ball);
   opponent->rectInside(ball);
+  opponent->inPossession(ball);
 
   ball->move();
 }
@@ -28,11 +28,9 @@ void ofApp::draw() {
   opponent->draw();
   ball->draw();
 
-//  float dist = ofDist(player->getX(), player->getY(), ball->getX(), ball->getY());
 //  ofSetColor(255, 255, 255);
-//  ofDrawBitmapString("Distance: ", 40, (ofGetHeight() - 40));
-//  ofDrawBitmapString(ofToString(), 40, (ofGetHeight() - 20));
-//
+//  ofDrawBitmapString("Position: ", 40, (ofGetHeight() - 40));
+//  ofDrawBitmapString(ofToString(opponent->thisPosition()), 40, (ofGetHeight() - 20));
 }
 
 void ofApp::keyPressed(int key) {
