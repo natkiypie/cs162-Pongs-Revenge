@@ -24,5 +24,6 @@ class Opponent {
     float velocity;
     int acceleration;
     int speed;
+    int offset;
     ofColor color;
 };

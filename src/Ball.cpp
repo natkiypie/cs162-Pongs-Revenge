@@ -3,8 +3,9 @@
 
 Ball::Ball() {
   this->position = ofVec2f((ofGetWidth()/2), (ofGetHeight()/2));
-  this->speed = 6;
-  this->velocity = ofVec2f(this->speed, this->speed);
+  this->speed = 10;
+  this->direction = 0;
+  this->velocity = ofVec2f(this->speed, this->direction);
   this->width = 10;
   this->height = 10;
   this->color = ofColor(255, 255, 255);
@@ -26,8 +27,9 @@ void Ball::move() {
   }
 }
 
-void Ball::bounce() {
-  this->velocity *= -1;
+void Ball::bounce(float dir, int vel) {
+  this->velocity = ofVec2f(this->speed, dir);
+  this->velocity *= vel;
 }
 
 float Ball::getX() {

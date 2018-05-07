@@ -24,3 +24,5 @@ class Player {
     int speed;
     ofColor color;
 };
+
+void drawLine(int y);

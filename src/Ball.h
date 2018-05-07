@@ -8,14 +8,15 @@ class Ball {
     Ball();
     void draw();
     void move();
-    void bounce();
+    void bounce(float dir, int vel);
     float getX();
     float getY();
     ofRectangle getBall();
 
   private:
     ofVec2f position;
-    int speed;
+    float speed;
+    float direction;
     ofVec2f velocity;
     int width;
     int height;

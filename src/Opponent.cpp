@@ -7,6 +7,7 @@ Opponent::Opponent() {
   this->velocity = 0;
   this->acceleration = 6;
   this->speed = 6;
+  this->offset = 3;
   this->color = ofColor(255, 255, 255);
 }
 
@@ -37,9 +38,9 @@ void Opponent::down() {
 }
 
 void Opponent::center() {
-  if (this->position.y <= ((ofGetHeight() / 2) - 2)) {
+  if (this->position.y <= ((ofGetHeight() / 2) - this->offset)) {
     this->down();
-  } else if (this->position.y >= ((ofGetHeight() / 2) + 2)) {
+  } else if (this->position.y >= ((ofGetHeight() / 2) + this->offset)) {
     this->up();
   } else {
     this->velocity = 0;
@@ -74,9 +75,29 @@ void Opponent::track(Ball* ball) {
   }
 }
 
+//void Opponent::rectInside(Ball* ball) {
+//  ofRectangle rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
+//  if (rect.intersects(ball->getBall()) == true) {
+//    ball->bounce();
+//  }
+//}
+
 void Opponent::rectInside(Ball* ball) {
-  ofRectangle rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
-  if (rect.intersects(ball->getBall()) == true) {
-    ball->bounce();
+  ofRectangle segOne = ofRectangle(this->position.x, ((this->position.y - (this->height / 2)) + 6), this->width, 12);
+  ofRectangle segTwo = ofRectangle(this->position.x, ((this->position.y - (this->height / 2)) + 18), this->width, 12);
+  ofRectangle segThree = ofRectangle(this->position.x, ((this->position.y - (this->height / 2)) + 30), this->width, 12);
+  ofRectangle segFour = ofRectangle(this->position.x, ((this->position.y - (this->height / 2)) + 42), this->width, 12);
+  ofRectangle segFive = ofRectangle(this->position.x, ((this->position.y - (this->height / 2)) + 54), this->width, 12);
+
+  if (segOne.intersects(ball->getBall()) == true) {
+    ball->bounce(3, 1);
+  } else if (segTwo.intersects(ball->getBall()) == true) {
+    ball->bounce(0.5, 1);
+  } else if (segThree.intersects(ball->getBall()) == true) {
+    ball->bounce(0, 1);
+  } else if (segFour.intersects(ball->getBall()) == true) {
+    ball->bounce(-0.5, 1);
+  } else if (segFive.intersects(ball->getBall()) == true) {
+    ball->bounce(-3, 1);
   }
 }

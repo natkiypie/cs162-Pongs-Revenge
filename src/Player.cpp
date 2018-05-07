@@ -49,8 +49,26 @@ void Player::atBoundry() {
 }
 
 void Player::rectInside(Ball* ball) {
-  ofRectangle rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
-  if (rect.intersects(ball->getBall()) == true) {
-    ball->bounce();
+  ofRectangle segOne = ofRectangle(this->position.x, ((this->position.y - (this->height / 2)) + 6), this->width, 12);
+  ofRectangle segTwo = ofRectangle(this->position.x, ((this->position.y - (this->height / 2)) + 18), this->width, 12);
+  ofRectangle segThree = ofRectangle(this->position.x, ((this->position.y - (this->height / 2)) + 30), this->width, 12);
+  ofRectangle segFour = ofRectangle(this->position.x, ((this->position.y - (this->height / 2)) + 42), this->width, 12);
+  ofRectangle segFive = ofRectangle(this->position.x, ((this->position.y - (this->height / 2)) + 54), this->width, 12);
+
+  if (segOne.intersects(ball->getBall()) == true) {
+    ball->bounce(-3, -1);
+  } else if (segTwo.intersects(ball->getBall()) == true) {
+    ball->bounce(-0.5, -1);
+  } else if (segThree.intersects(ball->getBall()) == true) {
+    ball->bounce(0, -1);
+  } else if (segFour.intersects(ball->getBall()) == true) {
+    ball->bounce(0.5, -1);
+  } else if (segFive.intersects(ball->getBall()) == true) {
+    ball->bounce(3, -1);
   }
+}
+
+void drawLine(int y) {
+  ofSetLineWidth(4);
+  ofDrawLine((ofGetWidth() / 2), y, (ofGetWidth() / 2), (y + 8));
 }
