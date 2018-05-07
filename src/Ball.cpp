@@ -3,7 +3,7 @@
 
 Ball::Ball() {
   this->position = ofVec2f((ofGetWidth()/2), (ofGetHeight()/2));
-  this->speed = 10;
+  this->speed = 8;
   this->direction = 0;
   this->velocity = ofVec2f(this->speed, this->direction);
   this->width = 10;

@@ -13,7 +13,7 @@ class Player {
     void down();
     void release();
     void atBoundry();
-    void rectInside(Ball* ball);
+    void collision(Ball* ball);
     float getY();
 
   private:

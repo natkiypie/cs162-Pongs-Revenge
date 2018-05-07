@@ -16,7 +16,7 @@ class Opponent {
     void atBoundry();
     void inPossession(Ball* ball, Player* player);
     void track(Ball* ball, int max);
-    void rectInside(Ball* ball);
+    void collision(Ball* ball);
     
   private:
     ofVec2f position;

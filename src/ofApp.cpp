@@ -13,11 +13,11 @@ void ofApp::setup() {
 void ofApp::update() {
   player->move();
   player->atBoundry();
-  player->rectInside(ball);
+  player->collision(ball);
 
   opponent->move();
   opponent->inPossession(ball, player);
-  opponent->rectInside(ball);
+  opponent->collision(ball);
   opponent->atBoundry();
 
   ball->move();
