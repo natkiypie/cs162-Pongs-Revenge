@@ -55,16 +55,20 @@ void Opponent::atBoundry() {
   }
 }
 
-void Opponent::inPossession(Ball* ball) {
-  if (ball->getX() >= (ofGetWidth() / 2)) {
-    this->track(ball);
+void Opponent::inPossession(Ball* ball, Player* player) {
+  if (ball->getX() >= (ofGetWidth() / 2) && player->getY() < this->position.y) {
+    this->track(ball, -40);
+  } else if (ball->getX() >= (ofGetWidth() / 2) && player->getY() > this->position.y) {
+    this->track(ball, 40);
+  } else if (ball->getX() >= (ofGetWidth() / 2) && player->getY() == this->position.y) {
+    this->track(ball, 0);
   } else {
     this->center();
   }
 }
 
-void Opponent::track(Ball* ball) {
-  float direction = (ball->getY() - this->position.y);
+void Opponent::track(Ball* ball, int max) {
+  float direction = ((ball->getY() + ofRandom(0, max)) - this->position.y);
   float distance = ofDist(this->position.x, this->position.y, ball->getX(), ball->getY());
   direction /= distance;
   this->velocity += direction *= this->acceleration;
@@ -74,13 +78,6 @@ void Opponent::track(Ball* ball) {
     this->velocity = this->speed;
   }
 }
-
-//void Opponent::rectInside(Ball* ball) {
-//  ofRectangle rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
-//  if (rect.intersects(ball->getBall()) == true) {
-//    ball->bounce();
-//  }
-//}
 
 void Opponent::rectInside(Ball* ball) {
   ofRectangle segOne = ofRectangle(this->position.x, ((this->position.y - (this->height / 2)) + 6), this->width, 12);

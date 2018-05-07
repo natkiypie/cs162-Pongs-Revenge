@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "Player.h"
 #include "Ball.h"
 
 class Opponent {
@@ -13,8 +14,8 @@ class Opponent {
     void down();
     void center();
     void atBoundry();
-    void inPossession(Ball* ball);
-    void track(Ball* ball);
+    void inPossession(Ball* ball, Player* player);
+    void track(Ball* ball, int max);
     void rectInside(Ball* ball);
     
   private:

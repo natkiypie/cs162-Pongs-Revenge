@@ -16,7 +16,7 @@ void ofApp::update() {
   player->rectInside(ball);
 
   opponent->move();
-  opponent->inPossession(ball);
+  opponent->inPossession(ball, player);
   opponent->rectInside(ball);
   opponent->atBoundry();
 

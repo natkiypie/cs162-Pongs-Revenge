@@ -14,6 +14,7 @@ class Player {
     void release();
     void atBoundry();
     void rectInside(Ball* ball);
+    float getY();
 
   private:
     ofVec2f position;
