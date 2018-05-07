@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Opponent.h"
 #include "Ball.h"
+#include "Table.h"
 
 class ofApp : public ofBaseApp {
 

@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Opponent.h"
 #include "Ball.h"
+#include "Table.h"
 
 void ofApp::setup() {
   ofSetBackgroundColor(0, 0, 0);
