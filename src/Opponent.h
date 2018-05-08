@@ -19,6 +19,8 @@ class Opponent {
     void collision(Ball* ball);
     int getScore();
     void point(Ball* ball);
+    void loadFont();
+    void printScore();
     
   private:
     ofVec2f position;
@@ -30,4 +32,5 @@ class Opponent {
     int offset;
     int score;
     ofColor color;
+    ofTrueTypeFont font;
 };

@@ -88,3 +88,18 @@ void Player::point(Ball* ball) {
     this->score++;
   }
 }
+
+void Player::loadFont() {
+  font.load("notosans.ttf", 40, true, true, true);
+}
+
+void Player::printScore() {
+  char score[255];
+  if (this->getScore() < 10) {
+    sprintf(score, "0%d", this->getScore());
+    font.drawString(score, (ofGetWidth() / 4), 100);
+  } else {
+    sprintf(score, "%d", this->getScore());
+    font.drawString(score, (ofGetWidth() / 4), 100);
+  }
+}

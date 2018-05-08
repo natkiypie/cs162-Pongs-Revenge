@@ -17,6 +17,8 @@ class Player {
     float getY();
     int getScore();
     void point(Ball* ball);
+    void loadFont();
+    void printScore();
 
   private:
     ofVec2f position;
@@ -27,4 +29,6 @@ class Player {
     int speed;
     int score;
     ofColor color;
+    ofTrueTypeFont font;
 };
+

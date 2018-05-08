@@ -115,3 +115,18 @@ void Opponent::point(Ball* ball) {
     this->score++;
   }
 }
+
+void Opponent::loadFont() {
+  font.load("notosans.ttf", 40, true, true, true);
+}
+
+void Opponent::printScore() {
+  char score[255];
+  if (this->getScore() < 10) {
+   sprintf(score, "0%d", this->getScore());
+   font.drawString(score, (ofGetWidth() - ((ofGetWidth() / 4) + 60)), 100);
+  } else {
+   sprintf(score, "%d", this->getScore());
+   font.drawString(score, (ofGetWidth() - ((ofGetWidth() / 4) + 60)), 100);
+  }
+}

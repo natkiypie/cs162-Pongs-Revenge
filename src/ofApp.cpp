@@ -2,14 +2,16 @@
 #include "Player.h"
 #include "Opponent.h"
 #include "Ball.h"
-#include "Table.h"
 
 void ofApp::setup() {
-  score.load("notosans.ttf", 40, true, true, true);
+//  score.load("notosans.ttf", 40, true, true, true);
   ofSetBackgroundColor(0, 0, 0);
   player = new Player();
   opponent = new Opponent();
   ball = new Ball();
+
+  player->loadFont();
+  opponent->loadFont();
 }
 
 void ofApp::update() {
@@ -28,15 +30,17 @@ void ofApp::update() {
 }
 
 void ofApp::draw() {
-  printScores();
-
-  player->draw();
-  opponent->draw();
-  ball->draw();
-
   for (int i = 36; i <= 732; i += 16) {
-    drawLine(i);
+    halfCourt(i);
   }
+
+  player->printScore();
+  player->draw();
+
+  opponent->printScore();
+  opponent->draw();
+
+  ball->draw();
 
 //  ofSetColor(255, 255, 255);
 //  ofDrawBitmapString("Player Y: ", 40, (ofGetHeight() - 40));
@@ -59,26 +63,9 @@ void ofApp::keyReleased(int key) {
   }
 }
 
-void ofApp::printScores() {
-  char scorePlayer[255];
-  char scoreOpponent[255];
-
-  ofSetColor(255, 255, 255);
-  if (player->getScore() < 10) {
-    sprintf(scorePlayer, "0%d", player->getScore());
-    score.drawString(scorePlayer, (ofGetWidth() / 4), 100);
-  } else {
-    sprintf(scorePlayer, "%d", player->getScore());
-    score.drawString(scorePlayer, (ofGetWidth() / 4), 100);
-  }
-
-  if (opponent->getScore() < 10) {
-   sprintf(scoreOpponent, "0%d", opponent->getScore());
-   score.drawString(scoreOpponent, (ofGetWidth() - ((ofGetWidth() / 4) + 60)), 100);
-  } else {
-   sprintf(scoreOpponent, "%d", opponent->getScore());
-   score.drawString(scoreOpponent, (ofGetWidth() - ((ofGetWidth() / 4) + 60)), 100);
-  }
+void ofApp::halfCourt(int y) {
+  ofSetLineWidth(4);
+  ofDrawLine((ofGetWidth() / 2), y, (ofGetWidth() / 2), (y + 8));
 }
 
 void ofApp::mouseMoved(int x, int y ) {
