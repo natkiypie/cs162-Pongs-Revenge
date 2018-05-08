@@ -23,12 +23,19 @@ void Ball::move() {
     this->velocity.x *= -1;
   } else if (this->position.y <= 0 || this->position.y >= ofGetHeight()) {
     this->velocity.y *= -1;
+    this->soundWall();
   }
 }
 
-void Ball::bounce(float dir, int vel) {
+void Ball::bouncePlayer(float dir) {
   this->velocity = ofVec2f(this->speed, dir);
-  this->velocity *= vel;
+  this->velocity *= -1;
+  this->soundPlayer();
+}
+
+void Ball::bounceOpponent(float dir) {
+  this->velocity = ofVec2f(this->speed, dir);
+  this->soundOpponent();
 }
 
 float Ball::getX() {
@@ -43,3 +50,32 @@ ofRectangle Ball::getBall() {
   ofRectangle rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
   return rect;
 }
+
+void Ball::soundLoad() {
+  player.load("ping.wav");
+  opponent.load("pong.wav");
+  wall.load("blip.wav");
+  win.load("win.wav");
+  lose.load("lose.wav");
+}
+
+void Ball::soundPlayer() {
+  player.play();
+}
+
+void Ball::soundOpponent() {
+  opponent.play();
+}
+
+void Ball::soundWall() {
+  wall.play();
+}
+
+void Ball::soundWin() {
+  win.play();
+}
+
+void Ball::soundLose() {
+  lose.play();
+}
+

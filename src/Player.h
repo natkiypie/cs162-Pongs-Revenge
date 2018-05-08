@@ -29,6 +29,6 @@ class Player {
     int speed;
     int score;
     ofColor color;
-    ofTrueTypeFont font;
+    ofTrueTypeFont notoSans;
 };
 

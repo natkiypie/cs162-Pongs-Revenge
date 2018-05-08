@@ -8,10 +8,17 @@ class Ball {
     Ball();
     void draw();
     void move();
-    void bounce(float dir, int vel);
+    void bouncePlayer(float dir);
+    void bounceOpponent(float dir);
     float getX();
     float getY();
     ofRectangle getBall();
+    void soundLoad();
+    void soundPlayer();
+    void soundOpponent();
+    void soundWall();
+    void soundWin();
+    void soundLose();
 
   private:
     ofVec2f position;
@@ -21,4 +28,5 @@ class Ball {
     int width;
     int height;
     ofColor color;
+    ofSoundPlayer player, opponent, wall, win, lose;
 };

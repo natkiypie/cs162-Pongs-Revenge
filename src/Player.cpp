@@ -59,19 +59,19 @@ void Player::collision(Ball* ball) {
   ofRectangle segSeven = ofRectangle(this->position.x, ((this->position.y - (this->height / 2)) + 57.5), this->width, 5);
 
   if (segOne.intersects(ball->getBall()) == true) {
-    ball->bounce(-8, -1);
+    ball->bouncePlayer(-8);
   } else if (segTwo.intersects(ball->getBall()) == true) {
-    ball->bounce(-3, -1);
+    ball->bouncePlayer(-3);
   } else if (segThree.intersects(ball->getBall()) == true) {
-    ball->bounce(-0.5, -1);
+    ball->bouncePlayer(-0.5);
   } else if (segFour.intersects(ball->getBall()) == true) {
-    ball->bounce(0, -1);
+    ball->bouncePlayer(0);
   } else if (segFive.intersects(ball->getBall()) == true) {
-    ball->bounce(0.5, -1);
+    ball->bouncePlayer(0.5);
   } else if (segSix.intersects(ball->getBall()) == true) {
-    ball->bounce(3, -1);
+    ball->bouncePlayer(3);
   } else if (segSeven.intersects(ball->getBall()) == true) {
-    ball->bounce(8, -1);
+    ball->bouncePlayer(8);
   }
 }
 
@@ -86,20 +86,21 @@ int Player::getScore() {
 void Player::point(Ball* ball) {
   if (ball->getX() >= ofGetWidth()) {
     this->score++;
+    ball->soundWin();
   }
 }
 
 void Player::loadFont() {
-  font.load("notosans.ttf", 40, true, true, true);
+  notoSans.load("notoSans.ttf", 40, true, true, true);
 }
 
 void Player::printScore() {
   char score[255];
   if (this->getScore() < 10) {
     sprintf(score, "0%d", this->getScore());
-    font.drawString(score, (ofGetWidth() / 4), 100);
+    notoSans.drawString(score, (ofGetWidth() / 4), 100);
   } else {
     sprintf(score, "%d", this->getScore());
-    font.drawString(score, (ofGetWidth() / 4), 100);
+    notoSans.drawString(score, (ofGetWidth() / 4), 100);
   }
 }

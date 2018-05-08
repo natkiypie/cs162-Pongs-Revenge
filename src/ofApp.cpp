@@ -4,14 +4,16 @@
 #include "Ball.h"
 
 void ofApp::setup() {
-//  score.load("notosans.ttf", 40, true, true, true);
+
   ofSetBackgroundColor(0, 0, 0);
+
   player = new Player();
   opponent = new Opponent();
   ball = new Ball();
 
   player->loadFont();
   opponent->loadFont();
+  ball->soundLoad();
 }
 
 void ofApp::update() {

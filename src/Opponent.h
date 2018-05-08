@@ -32,5 +32,5 @@ class Opponent {
     int offset;
     int score;
     ofColor color;
-    ofTrueTypeFont font;
+    ofTrueTypeFont notoSans;
 };
