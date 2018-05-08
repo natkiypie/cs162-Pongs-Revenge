@@ -5,6 +5,7 @@
 #include "Table.h"
 
 void ofApp::setup() {
+  score.load("notosans.ttf", 40, true, true, true);
   ofSetBackgroundColor(0, 0, 0);
   player = new Player();
   opponent = new Opponent();
@@ -15,16 +16,20 @@ void ofApp::update() {
   player->move();
   player->atBoundry();
   player->collision(ball);
+  player->point(ball);
 
   opponent->move();
+  opponent->atBoundry();
   opponent->inPossession(ball, player);
   opponent->collision(ball);
-  opponent->atBoundry();
+  opponent->point(ball);
 
   ball->move();
 }
 
 void ofApp::draw() {
+  printScores();
+
   player->draw();
   opponent->draw();
   ball->draw();
@@ -35,7 +40,7 @@ void ofApp::draw() {
 
 //  ofSetColor(255, 255, 255);
 //  ofDrawBitmapString("Player Y: ", 40, (ofGetHeight() - 40));
-//  ofDrawBitmapString(ofToString(player->getY()), 40, (ofGetHeight() - 20));
+//  ofDrawBitmapString(ofToString(score.getGlyphBBox()), 40, (ofGetHeight() - 20));
 }
 
 void ofApp::keyPressed(int key) {
@@ -51,6 +56,28 @@ void ofApp::keyReleased(int key) {
     player->release();
   } else if (key == OF_KEY_DOWN) {
     player->release();
+  }
+}
+
+void ofApp::printScores() {
+  char scorePlayer[255];
+  char scoreOpponent[255];
+
+  ofSetColor(255, 255, 255);
+  if (player->getScore() < 10) {
+    sprintf(scorePlayer, "0%d", player->getScore());
+    score.drawString(scorePlayer, (ofGetWidth() / 4), 100);
+  } else {
+    sprintf(scorePlayer, "%d", player->getScore());
+    score.drawString(scorePlayer, (ofGetWidth() / 4), 100);
+  }
+
+  if (opponent->getScore() < 10) {
+   sprintf(scoreOpponent, "0%d", opponent->getScore());
+   score.drawString(scoreOpponent, (ofGetWidth() - ((ofGetWidth() / 4) + 60)), 100);
+  } else {
+   sprintf(scoreOpponent, "%d", opponent->getScore());
+   score.drawString(scoreOpponent, (ofGetWidth() - ((ofGetWidth() / 4) + 60)), 100);
   }
 }
 

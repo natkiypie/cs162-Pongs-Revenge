@@ -17,6 +17,8 @@ class Opponent {
     void inPossession(Ball* ball, Player* player);
     void track(Ball* ball, int max);
     void collision(Ball* ball);
+    int getScore();
+    void point(Ball* ball);
     
   private:
     ofVec2f position;
@@ -26,5 +28,6 @@ class Opponent {
     int acceleration;
     int speed;
     int offset;
+    int score;
     ofColor color;
 };

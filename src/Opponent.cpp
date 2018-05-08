@@ -8,6 +8,7 @@ Opponent::Opponent() {
   this->acceleration = 6;
   this->speed = 6;
   this->offset = 3;
+  this->score = 0;
   this->color = ofColor(255, 255, 255);
 }
 
@@ -102,5 +103,15 @@ void Opponent::collision(Ball* ball) {
     ball->bounce(-3, 1);
   } else if (segSeven.intersects(ball->getBall()) == true) {
     ball->bounce(-8, 1);
+  }
+}
+
+int Opponent::getScore() {
+  return this->score;
+}
+
+void Opponent::point(Ball* ball) {
+  if (ball->getX() <= 0) {
+    this->score++;
   }
 }

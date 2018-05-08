@@ -15,6 +15,8 @@ class Player {
     void atBoundry();
     void collision(Ball* ball);
     float getY();
+    int getScore();
+    void point(Ball* ball);
 
   private:
     ofVec2f position;
@@ -23,7 +25,6 @@ class Player {
     float velocity;
     int acceleration;
     int speed;
+    int score;
     ofColor color;
 };
-
-void drawLine(int y);

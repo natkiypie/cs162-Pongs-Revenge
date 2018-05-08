@@ -7,6 +7,7 @@ Player::Player() {
   this->velocity = 0;
   this->acceleration = 6;
   this->speed = 6;
+  this->score = 0;
   this->color = ofColor(255, 255, 255);
 }
 
@@ -76,4 +77,14 @@ void Player::collision(Ball* ball) {
 
 float Player::getY() {
   return this->position.y;
+}
+
+int Player::getScore() {
+  return this->score;
+}
+
+void Player::point(Ball* ball) {
+  if (ball->getX() >= ofGetWidth()) {
+    this->score++;
+  }
 }
