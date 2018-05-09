@@ -14,10 +14,13 @@ void ofApp::update() {
   paddle->move();
   paddle->boundry();
   paddle->inPossession(ball);
-  paddle->collisionPlayer(ball);
-  paddle->collisionOpponent(ball);
+  paddle->collisionInitialize(ball);
   paddle->point(ball);
+
+
   ball->move();
+  ball->bounceWall();
+  ball->countDown();
 }
 
 void ofApp::draw() {
@@ -28,9 +31,10 @@ void ofApp::draw() {
   paddle->printScoreOpponent();
   paddle->draw();
   ball->draw();
-//  ofSetColor(255, 255, 255);
-//  ofDrawBitmapString("Player Y: ", 40, (ofGetHeight() - 40));
-//  ofDrawBitmapString(ofToString(score.getGlyphBBox()), 40, (ofGetHeight() - 20));
+
+  ofSetColor(255, 255, 255);
+  ofDrawBitmapString("Count: ", 40, (ofGetHeight() - 40));
+  ofDrawBitmapString(ofToString(ball->getCount()), 40, (ofGetHeight() - 20));
 }
 
 void ofApp::keyPressed(int key) {

@@ -1,5 +1,7 @@
 #include "Ball.h"
 
+static const int COUNT_VALUE = 180;
+
 Ball::Ball() {
   this->position = ofVec2f((ofGetWidth()/2), (ofGetHeight()/2));
   this->speed = 10;
@@ -8,6 +10,9 @@ Ball::Ball() {
   this->width = 10;
   this->height = 10;
   this->color = ofColor(255, 255, 255);
+
+  this->count = COUNT_VALUE;
+  this->countStart = false;
 }
 
 void Ball::soundLoad() {
@@ -26,10 +31,11 @@ void Ball::draw() {
 }
 
 void Ball::move() {
-  this->position -= this->velocity;
-  if (this->position.x <= 0 || this->position.x >= ofGetWidth()) {
-    this->velocity.x *= -1;
-  } else if (this->position.y <= 0 || this->position.y >= ofGetHeight()) {
+  this->position += this->velocity;
+}
+
+void Ball::bounceWall() {
+  if (this->position.y <= 0 || this->position.y >= ofGetHeight()) {
     this->velocity.y *= -1;
     this->soundWall();
   }
@@ -37,12 +43,12 @@ void Ball::move() {
 
 void Ball::bouncePlayer(float dir) {
   this->velocity = ofVec2f(this->speed, dir);
-  this->velocity *= -1;
   this->soundPlayer();
 }
 
 void Ball::bounceOpponent(float dir) {
   this->velocity = ofVec2f(this->speed, dir);
+  this->velocity *= -1;
   this->soundOpponent();
 }
 
@@ -77,4 +83,26 @@ float Ball::getY() {
 ofRectangle Ball::getBoundingBox() {
   ofRectangle rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
   return rect;
+}
+
+void Ball::setVelocity() {
+  this->velocity.x *= -1;
+}
+
+void Ball::setCountStart() {
+  this->countStart = true;
+}
+
+void Ball::countDown() {
+  if (this->countStart == true) {
+    this->count--;
+    if (this->count <= 0) {
+      this->countStart = false;
+      this->count = COUNT_VALUE;
+    }
+  }
+}
+
+int Ball::getCount() {
+  return this->count;
 }

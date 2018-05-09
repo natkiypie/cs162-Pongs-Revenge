@@ -111,11 +111,11 @@ void Paddle::center() {
 }
 
 void Paddle::inPossession(Ball* ball) {
-  if (ball->getX() >= (ofGetWidth() / 2) && this->positionPlayer.y < this->positionOpponent.y) {
+  if (ball->getX() >= (ofGetWidth() / 4) && this->positionPlayer.y < this->positionOpponent.y) {
     this->track(ball, -40);
-  } else if (ball->getX() >= (ofGetWidth() / 2) && this->positionPlayer.y > this->positionOpponent.y) {
+  } else if (ball->getX() >= (ofGetWidth() / 4) && this->positionPlayer.y > this->positionOpponent.y) {
     this->track(ball, 40);
-  } else if (ball->getX() >= (ofGetWidth() / 2) && this->positionPlayer.y == this->positionOpponent.y) {
+  } else if (ball->getX() >= (ofGetWidth() / 4) && this->positionPlayer.y == this->positionOpponent.y) {
     this->track(ball, 0);
   } else {
     this->center();
@@ -134,62 +134,37 @@ void Paddle::track(Ball* ball, int max) {
   }
 }
 
-void Paddle::collisionPlayer(Ball* ball) {
-  ofRectangle segOne = ofRectangle(this->positionPlayer.x, ((this->positionPlayer.y - (this->height / 2)) + 2.5), this->width, 5);
-  ofRectangle segTwo = ofRectangle(this->positionPlayer.x, ((this->positionPlayer.y - (this->height / 2)) + 10), this->width, 10);
-  ofRectangle segThree = ofRectangle(this->positionPlayer.x, ((this->positionPlayer.y - (this->height / 2)) + 20), this->width, 10);
-  ofRectangle segFour = ofRectangle(this->positionPlayer.x, ((this->positionPlayer.y - (this->height / 2)) + 30), this->width, 10);
-  ofRectangle segFive = ofRectangle(this->positionPlayer.x, ((this->positionPlayer.y - (this->height / 2)) + 40), this->width, 10);
-  ofRectangle segSix = ofRectangle(this->positionPlayer.x, ((this->positionPlayer.y - (this->height / 2)) + 50), this->width, 10);
-  ofRectangle segSeven = ofRectangle(this->positionPlayer.x, ((this->positionPlayer.y - (this->height / 2)) + 57.5), this->width, 5);
-  if (segOne.intersects(ball->getBoundingBox()) == true) {
-    ball->bouncePlayer(-8);
-  } else if (segTwo.intersects(ball->getBoundingBox()) == true) {
-    ball->bouncePlayer(-3);
-  } else if (segThree.intersects(ball->getBoundingBox()) == true) {
-    ball->bouncePlayer(-0.5);
-  } else if (segFour.intersects(ball->getBoundingBox()) == true) {
-    ball->bouncePlayer(0);
-  } else if (segFive.intersects(ball->getBoundingBox()) == true) {
-    ball->bouncePlayer(0.5);
-  } else if (segSix.intersects(ball->getBoundingBox()) == true) {
-    ball->bouncePlayer(3);
-  } else if (segSeven.intersects(ball->getBoundingBox()) == true) {
-    ball->bouncePlayer(8);
-  }
+void Paddle::collisionInitialize(Ball* ball) {
+  this->collision(ball, 2.5, 5, -8);
+  this->collision(ball, 10, 10, -3);
+  this->collision(ball, 20, 10, -0.5);
+  this->collision(ball, 30, 10, 0);
+  this->collision(ball, 40, 10, 0.5);
+  this->collision(ball, 50, 10, 3);
+  this->collision(ball, 57.5, 5, 8);
 }
 
-void Paddle::collisionOpponent(Ball* ball) {
-  ofRectangle segOne = ofRectangle(this->positionOpponent.x, ((this->positionOpponent.y - (this->height / 2)) + 2.5), this->width, 5);
-  ofRectangle segTwo = ofRectangle(this->positionOpponent.x, ((this->positionOpponent.y - (this->height / 2)) + 10), this->width, 10);
-  ofRectangle segThree = ofRectangle(this->positionOpponent.x, ((this->positionOpponent.y - (this->height / 2)) + 20), this->width, 10);
-  ofRectangle segFour = ofRectangle(this->positionOpponent.x, ((this->positionOpponent.y - (this->height / 2)) + 30), this->width, 10);
-  ofRectangle segFive = ofRectangle(this->positionOpponent.x, ((this->positionOpponent.y - (this->height / 2)) + 40), this->width, 10);
-  ofRectangle segSix = ofRectangle(this->positionOpponent.x, ((this->positionOpponent.y - (this->height / 2)) + 50), this->width, 10);
-  ofRectangle segSeven = ofRectangle(this->positionOpponent.x, ((this->positionOpponent.y - (this->height / 2)) + 57.5), this->width, 5);
-  if (segOne.intersects(ball->getBoundingBox()) == true) {
-    ball->bounceOpponent(8);
-  } else if (segTwo.intersects(ball->getBoundingBox()) == true) {
-    ball->bounceOpponent(3);
-  } else if (segThree.intersects(ball->getBoundingBox()) == true) {
-    ball->bounceOpponent(0.5);
-  } else if (segFour.intersects(ball->getBoundingBox()) == true) {
-    ball->bounceOpponent(0);
-  } else if (segFive.intersects(ball->getBoundingBox()) == true) {
-    ball->bounceOpponent(-0.5);
-  } else if (segSix.intersects(ball->getBoundingBox()) == true) {
-    ball->bounceOpponent(-3);
-  } else if (segSeven.intersects(ball->getBoundingBox()) == true) {
-    ball->bounceOpponent(-8);
+void Paddle::collision(Ball* ball, float r, int n, float s) {
+  ofRectangle rectPlayer = ofRectangle(this->positionPlayer.x, ((this->positionPlayer.y - (this->height / 2)) + r), this->width, n);
+  ofRectangle rectOpponent = ofRectangle(this->positionOpponent.x, ((this->positionOpponent.y - (this->height / 2)) + r), this->width, n);
+  if (rectPlayer.intersects(ball->getBoundingBox()) == true) {
+    ball->bouncePlayer(s);
+  } else if (rectOpponent.intersects(ball->getBoundingBox()) == true) {
+    ball->bounceOpponent(-s);
   }
 }
 
 void Paddle::point(Ball* ball) {
   if (ball->getX() >= ofGetWidth()) {
-    this->scorePlayer++;
+    ball->setCountStart();
+    ball->setVelocity();
     ball->soundWin();
+    this->scorePlayer++;
   } else if (ball->getX() <= 0) {
+    ball->setCountStart();
+    ball->setVelocity();
     this->scoreOpponent++;
     ball->soundLose();
   }
 }
+

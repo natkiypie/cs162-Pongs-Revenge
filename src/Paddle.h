@@ -21,9 +21,10 @@ class Paddle {
     void center();
     void inPossession(Ball* ball);
     void track(Ball* ball, int max);
-    void collisionPlayer(Ball* ball);
-    void collisionOpponent(Ball* ball);
+    void collisionInitialize(Ball* ball);
+    void collision(Ball* ball, float r, int n, float s);
     void point(Ball* ball);
+
 
   private:
     ofVec2f positionPlayer;
