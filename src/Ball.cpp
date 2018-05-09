@@ -10,6 +10,14 @@ Ball::Ball() {
   this->color = ofColor(255, 255, 255);
 }
 
+void Ball::soundLoad() {
+  player.load("ping.wav");
+  opponent.load("pong.wav");
+  wall.load("blip.wav");
+  win.load("win.wav");
+  lose.load("lose.wav");
+}
+
 void Ball::draw() {
   ofFill();
   ofSetColor(this->color);
@@ -38,27 +46,6 @@ void Ball::bounceOpponent(float dir) {
   this->soundOpponent();
 }
 
-float Ball::getX() {
-  return this->position.x;
-}
-
-float Ball::getY() {
-  return this->position.y;
-}
-
-ofRectangle Ball::getBall() {
-  ofRectangle rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
-  return rect;
-}
-
-void Ball::soundLoad() {
-  player.load("ping.wav");
-  opponent.load("pong.wav");
-  wall.load("blip.wav");
-  win.load("win.wav");
-  lose.load("lose.wav");
-}
-
 void Ball::soundPlayer() {
   player.play();
 }
@@ -79,3 +66,15 @@ void Ball::soundLose() {
   lose.play();
 }
 
+float Ball::getX() {
+  return this->position.x;
+}
+
+float Ball::getY() {
+  return this->position.y;
+}
+
+ofRectangle Ball::getBoundingBox() {
+  ofRectangle rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
+  return rect;
+}

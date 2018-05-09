@@ -1,15 +1,13 @@
 #pragma once
 
 #include "ofMain.h"
-#include "Player.h"
-#include "Opponent.h"
+#include "Paddle.h"
 #include "Ball.h"
 
 class ofApp : public ofBaseApp {
 
 	public:
-    Player* player;
-    Opponent* opponent;
+    Paddle* paddle;
     Ball* ball;
 		void setup();
 		void update();

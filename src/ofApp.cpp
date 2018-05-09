@@ -1,33 +1,22 @@
 #include "ofApp.h"
-#include "Player.h"
-#include "Opponent.h"
+#include "Paddle.h"
 #include "Ball.h"
 
 void ofApp::setup() {
-
-  ofSetBackgroundColor(0, 0, 0);
-
-  player = new Player();
-  opponent = new Opponent();
+  paddle = new Paddle();
   ball = new Ball();
-
-  player->loadFont();
-  opponent->loadFont();
+  paddle->loadFont();
   ball->soundLoad();
+  ofSetBackgroundColor(0, 0, 0);
 }
 
 void ofApp::update() {
-  player->move();
-  player->atBoundry();
-  player->collision(ball);
-  player->point(ball);
-
-  opponent->move();
-  opponent->atBoundry();
-  opponent->inPossession(ball, player);
-  opponent->collision(ball);
-  opponent->point(ball);
-
+  paddle->move();
+  paddle->boundry();
+  paddle->inPossession(ball);
+  paddle->collisionPlayer(ball);
+  paddle->collisionOpponent(ball);
+  paddle->point(ball);
   ball->move();
 }
 
@@ -35,15 +24,10 @@ void ofApp::draw() {
   for (int i = 36; i <= 732; i += 16) {
     halfCourt(i);
   }
-
-  player->printScore();
-  player->draw();
-
-  opponent->printScore();
-  opponent->draw();
-
+  paddle->printScorePlayer();
+  paddle->printScoreOpponent();
+  paddle->draw();
   ball->draw();
-
 //  ofSetColor(255, 255, 255);
 //  ofDrawBitmapString("Player Y: ", 40, (ofGetHeight() - 40));
 //  ofDrawBitmapString(ofToString(score.getGlyphBBox()), 40, (ofGetHeight() - 20));
@@ -51,17 +35,17 @@ void ofApp::draw() {
 
 void ofApp::keyPressed(int key) {
   if (key == OF_KEY_UP) {
-    player->up();
+    paddle->upPlayer();
   } else if (key == OF_KEY_DOWN) {
-    player->down();
+    paddle->downPlayer();
   }
 }
 
 void ofApp::keyReleased(int key) {
   if (key == OF_KEY_UP) {
-    player->release();
+    paddle->release();
   } else if (key == OF_KEY_DOWN) {
-    player->release();
+    paddle->release();
   }
 }
 
