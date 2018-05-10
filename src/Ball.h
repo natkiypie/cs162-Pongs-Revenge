@@ -12,15 +12,11 @@ class Ball {
     void bounceWall();
     void bouncePlayer(float dir);
     void bounceOpponent(float dir);
-    void soundPlayer();
-    void soundOpponent();
-    void soundWall();
-    void soundWin();
-    void soundLose();
+    void soundPlayerScore();
+    void soundOpponentScore();
     float getX();
     float getY();
     ofRectangle getBoundingBox();
-    void setVelocity();
     void countDown();
     void center();
     void serve();
@@ -34,8 +30,7 @@ class Ball {
     int width;
     int height;
     ofColor color;
-    ofSoundPlayer player, opponent, wall, win, lose;
-
+    ofSoundPlayer player, opponent, wall, playerScore, opponentScore, gameLose, gameWin;
     bool playerServe;
     int count;
     bool countStart;

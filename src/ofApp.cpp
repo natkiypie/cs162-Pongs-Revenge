@@ -13,7 +13,7 @@ void ofApp::setup() {
 void ofApp::update() {
   paddle->move();
   paddle->boundry();
-  paddle->inPossession(ball);
+  paddle->opponentInPossession(ball);
   paddle->collisionInitialize(ball);
   paddle->point(ball);
   paddle->serveChange(ball);
@@ -28,8 +28,8 @@ void ofApp::draw() {
   for (int i = 36; i <= 732; i += 16) {
     halfCourt(i);
   }
-  paddle->printScorePlayer();
-  paddle->printScoreOpponent();
+  paddle->playerPrintScore();
+  paddle->opponentPrintScore();
   paddle->draw();
   ball->draw();
 
@@ -39,17 +39,17 @@ void ofApp::draw() {
 
 void ofApp::keyPressed(int key) {
   if (key == OF_KEY_UP) {
-    paddle->upPlayer();
+    paddle->playerUp();
   } else if (key == OF_KEY_DOWN) {
-    paddle->downPlayer();
+    paddle->playerDown();
   }
 }
 
 void ofApp::keyReleased(int key) {
   if (key == OF_KEY_UP) {
-    paddle->release();
+    paddle->playerRelease();
   } else if (key == OF_KEY_DOWN) {
-    paddle->release();
+    paddle->playerRelease();
   }
 }
 

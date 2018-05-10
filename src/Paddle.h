@@ -8,36 +8,39 @@ class Paddle {
   public:
     Paddle();
     void loadFont();
-    void printScorePlayer();
-    void printScoreOpponent();
+    void playerPrintScore();
+    void opponentPrintScore();
     void draw();
     void move();
-    void upPlayer();
-    void upOpponent();
-    void downPlayer();
-    void downOpponent();
+    void playerUp();
+    void opponentUp();
+    void playerDown();
+    void opponentDown();
     void boundry();
-    void release();
-    void center();
-    void inPossession(Ball* ball);
-    void track(Ball* ball, int max);
+    void playerRelease();
+    void opponentCenter();
+    void opponentInPossession(Ball* ball);
+    void opponentTrack(Ball* ball, int max);
     void collisionInitialize(Ball* ball);
     void collision(Ball* ball, float r, int n, float s);
     void point(Ball* ball);
     void serveChange(Ball* ball);
 
+    void gameOver();
+    void gamePoint();
+
   private:
-    ofVec2f positionPlayer;
-    ofVec2f positionOpponent;
+    ofVec2f playerPosition;
+    ofVec2f opponentPosition;
     int width;
     int height;
-    float velocityPlayer;
-    float velocityOpponent;
+    float playerVelocity;
+    float opponentVelocity;
     int acceleration;
     int speed;
-    int offset;
-    int scorePlayer;
-    int scoreOpponent;
+    int opponentOffset;
+    int playerScore;
+    int opponentScore;
     ofColor color;
     ofTrueTypeFont notoSans;
 };

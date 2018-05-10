@@ -11,17 +11,18 @@ Ball::Ball() {
   this->height = 10;
   this->color = ofColor(255, 255, 255);
   this->playerServe = true;
-
   this->count = COUNT_VALUE;
   this->countStart = false;
 }
 
 void Ball::soundLoad() {
-  player.load("ping.wav");
-  opponent.load("pong.wav");
-  wall.load("blip.wav");
-  win.load("win.wav");
-  lose.load("lose.wav");
+  this->player.load("ping.wav");
+  this->opponent.load("pong.wav");
+  this->wall.load("blip.wav");
+  this->playerScore.load("playerScore.wav");
+  this->opponentScore.load("opponentScore.wav");
+  this->gameLose.load("gameLose.wav");
+  this->gameWin.load("gameWin.wav");
 }
 
 void Ball::draw() {
@@ -41,39 +42,27 @@ void Ball::move() {
 void Ball::bounceWall() {
   if (this->position.y <= 0 || this->position.y >= ofGetHeight()) {
     this->velocity.y *= -1;
-    this->soundWall();
+    this->wall.play();
   }
 }
 
 void Ball::bouncePlayer(float dir) {
   this->velocity = ofVec2f(this->speed, dir);
-  this->soundPlayer();
+  this->player.play();
 }
 
 void Ball::bounceOpponent(float dir) {
   this->velocity = ofVec2f(this->speed, dir);
   this->velocity *= -1;
-  this->soundOpponent();
+  this->opponent.play();
 }
 
-void Ball::soundPlayer() {
-  player.play();
+void Ball::soundPlayerScore() {
+  this->playerScore.play();
 }
 
-void Ball::soundOpponent() {
-  opponent.play();
-}
-
-void Ball::soundWall() {
-  wall.play();
-}
-
-void Ball::soundWin() {
-  win.play();
-}
-
-void Ball::soundLose() {
-  lose.play();
+void Ball::soundOpponentScore() {
+  this->opponentScore.play();
 }
 
 float Ball::getX() {
@@ -87,10 +76,6 @@ float Ball::getY() {
 ofRectangle Ball::getBoundingBox() {
   ofRectangle rect = ofRectangle(this->position.x, this->position.y, this->width, this->height);
   return rect;
-}
-
-void Ball::setVelocity() {
-  this->velocity.x *= -1;
 }
 
 void Ball::countDown() {
@@ -120,9 +105,9 @@ void Ball::serve() {
 }
 
 void Ball::serveChange() {
-  if (playerServe == true) {
-    playerServe = false;
+  if (this->playerServe == true) {
+    this->playerServe = false;
   } else if (playerServe == false) {
-    playerServe = true;
+    this->playerServe = true;
   }
 }
