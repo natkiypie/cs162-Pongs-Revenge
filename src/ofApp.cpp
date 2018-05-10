@@ -16,7 +16,7 @@ void ofApp::update() {
   paddle->inPossession(ball);
   paddle->collisionInitialize(ball);
   paddle->point(ball);
-
+  paddle->serveChange(ball);
 
   ball->move();
   ball->bounceWall();
@@ -24,6 +24,7 @@ void ofApp::update() {
 }
 
 void ofApp::draw() {
+  ofSetColor(255, 255, 255);
   for (int i = 36; i <= 732; i += 16) {
     halfCourt(i);
   }
@@ -32,9 +33,8 @@ void ofApp::draw() {
   paddle->draw();
   ball->draw();
 
-  ofSetColor(255, 255, 255);
-  ofDrawBitmapString("Count: ", 40, (ofGetHeight() - 40));
-  ofDrawBitmapString(ofToString(ball->getCount()), 40, (ofGetHeight() - 20));
+//  ofDrawBitmapString("Score Rem: ", 40, (ofGetHeight() - 40));
+//  ofDrawBitmapString(ofToString(paddle->scoreRem()), 40, (ofGetHeight() - 20));
 }
 
 void ofApp::keyPressed(int key) {

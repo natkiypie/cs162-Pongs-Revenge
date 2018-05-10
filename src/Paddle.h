@@ -24,7 +24,7 @@ class Paddle {
     void collisionInitialize(Ball* ball);
     void collision(Ball* ball, float r, int n, float s);
     void point(Ball* ball);
-
+    void serveChange(Ball* ball);
 
   private:
     ofVec2f positionPlayer;

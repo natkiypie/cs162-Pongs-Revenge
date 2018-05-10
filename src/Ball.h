@@ -21,9 +21,10 @@ class Ball {
     float getY();
     ofRectangle getBoundingBox();
     void setVelocity();
-    void setCountStart();
     void countDown();
-    int getCount();
+    void center();
+    void serve();
+    void serveChange();
 
   private:
     ofVec2f position;
@@ -35,6 +36,7 @@ class Ball {
     ofColor color;
     ofSoundPlayer player, opponent, wall, win, lose;
 
+    bool playerServe;
     int count;
     bool countStart;
 };

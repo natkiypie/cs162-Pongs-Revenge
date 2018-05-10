@@ -8,7 +8,7 @@ Paddle::Paddle() {
   this->velocityPlayer = 0;
   this->velocityOpponent = 0;
   this->acceleration = 6;
-  this->speed = 6;
+  this->speed = 8;
   this->offset = 3;
   this->scorePlayer = 0;
   this->scoreOpponent = 0;
@@ -111,11 +111,11 @@ void Paddle::center() {
 }
 
 void Paddle::inPossession(Ball* ball) {
-  if (ball->getX() >= (ofGetWidth() / 4) && this->positionPlayer.y < this->positionOpponent.y) {
+  if (ball->getX() > (ofGetWidth() / 2) && this->positionPlayer.y < this->positionOpponent.y) {
     this->track(ball, -40);
-  } else if (ball->getX() >= (ofGetWidth() / 4) && this->positionPlayer.y > this->positionOpponent.y) {
+  } else if (ball->getX() > (ofGetWidth() / 2) && this->positionPlayer.y > this->positionOpponent.y) {
     this->track(ball, 40);
-  } else if (ball->getX() >= (ofGetWidth() / 4) && this->positionPlayer.y == this->positionOpponent.y) {
+  } else if (ball->getX() > (ofGetWidth() / 2) && this->positionPlayer.y == this->positionOpponent.y) {
     this->track(ball, 0);
   } else {
     this->center();
@@ -156,15 +156,18 @@ void Paddle::collision(Ball* ball, float r, int n, float s) {
 
 void Paddle::point(Ball* ball) {
   if (ball->getX() >= ofGetWidth()) {
-    ball->setCountStart();
-    ball->setVelocity();
+    ball->center();
     ball->soundWin();
     this->scorePlayer++;
   } else if (ball->getX() <= 0) {
-    ball->setCountStart();
-    ball->setVelocity();
-    this->scoreOpponent++;
+    ball->center();
     ball->soundLose();
+    this->scoreOpponent++;
   }
 }
 
+void Paddle::serveChange(Ball* ball) {
+  if ((this->scorePlayer + this->scoreOpponent) % 5 == 4) {
+    ball->serveChange();
+  }
+}

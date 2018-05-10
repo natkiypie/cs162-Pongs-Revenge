@@ -10,6 +10,7 @@ Ball::Ball() {
   this->width = 10;
   this->height = 10;
   this->color = ofColor(255, 255, 255);
+  this->playerServe = true;
 
   this->count = COUNT_VALUE;
   this->countStart = false;
@@ -31,7 +32,10 @@ void Ball::draw() {
 }
 
 void Ball::move() {
-  this->position += this->velocity;
+  if (countStart == false) {
+    this->color = ofColor(255, 255, 255, 255);
+    this->position += this->velocity;
+  }
 }
 
 void Ball::bounceWall() {
@@ -89,10 +93,6 @@ void Ball::setVelocity() {
   this->velocity.x *= -1;
 }
 
-void Ball::setCountStart() {
-  this->countStart = true;
-}
-
 void Ball::countDown() {
   if (this->countStart == true) {
     this->count--;
@@ -103,6 +103,26 @@ void Ball::countDown() {
   }
 }
 
-int Ball::getCount() {
-  return this->count;
+void Ball::center() {
+  this->position = ofVec2f((ofGetWidth()/2), (ofGetHeight()/2));
+  this->serve();
+}
+
+void Ball::serve() {
+  this->color = ofColor(255, 255, 255, 0);
+  this->countStart = true;
+  if (playerServe == true) {
+    this->velocity = ofVec2f(this->speed, ofRandom(-3, 3));
+  } else if (playerServe == false) {
+    this->velocity = ofVec2f(this->speed, ofRandom(-3, 3));
+    this->velocity *= -1;
+  }
+}
+
+void Ball::serveChange() {
+  if (playerServe == true) {
+    playerServe = false;
+  } else if (playerServe == false) {
+    playerServe = true;
+  }
 }
