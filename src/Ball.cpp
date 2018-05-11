@@ -1,10 +1,10 @@
 #include "Ball.h"
 
-static const int COUNT_VALUE = 180;
+static const int COUNT_VALUE = 50;
 
 Ball::Ball() {
   this->position = ofVec2f((ofGetWidth()/2), (ofGetHeight()/2));
-  this->speed = 10;
+  this->speed = 16;
   this->direction = 0;
   this->velocity = ofVec2f(this->speed, this->direction);
   this->width = 10;
@@ -16,13 +16,13 @@ Ball::Ball() {
 }
 
 void Ball::soundLoad() {
-  this->player.load("ping.wav");
-  this->opponent.load("pong.wav");
-  this->wall.load("blip.wav");
-  this->playerScore.load("playerScore.wav");
-  this->opponentScore.load("opponentScore.wav");
-  this->gameLose.load("gameLose.wav");
-  this->gameWin.load("gameWin.wav");
+  player.load("ping.wav");
+  opponent.load("pong.wav");
+  wall.load("blip.wav");
+  playerScore.load("playerScore.wav");
+  opponentScore.load("opponentScore.wav");
+  gameLose.load("gameLose.wav");
+  gameWin.load("gameWin.wav");
 }
 
 void Ball::draw() {
@@ -42,27 +42,27 @@ void Ball::move() {
 void Ball::bounceWall() {
   if (this->position.y <= 0 || this->position.y >= ofGetHeight()) {
     this->velocity.y *= -1;
-    this->wall.play();
+    wall.play();
   }
 }
 
 void Ball::bouncePlayer(float dir) {
   this->velocity = ofVec2f(this->speed, dir);
-  this->player.play();
+  player.play();
 }
 
 void Ball::bounceOpponent(float dir) {
   this->velocity = ofVec2f(this->speed, dir);
   this->velocity *= -1;
-  this->opponent.play();
+  opponent.play();
 }
 
 void Ball::soundPlayerScore() {
-  this->playerScore.play();
+  playerScore.play();
 }
 
 void Ball::soundOpponentScore() {
-  this->opponentScore.play();
+  opponentScore.play();
 }
 
 float Ball::getX() {
@@ -105,9 +105,13 @@ void Ball::serve() {
 }
 
 void Ball::serveChange() {
-  if (this->playerServe == true) {
-    this->playerServe = false;
+  if (playerServe == true) {
+    playerServe = false;
   } else if (playerServe == false) {
-    this->playerServe = true;
+    playerServe = true;
   }
+}
+
+bool Ball::test() {
+  return this->playerServe;
 }

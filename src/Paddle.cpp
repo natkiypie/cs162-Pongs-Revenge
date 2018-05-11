@@ -21,6 +21,7 @@ void Paddle::loadFont() {
 
 void Paddle::playerPrintScore() {
   char score[255];
+  ofSetColor(255, 255, 255);
   if (this->playerScore < 10) {
     sprintf(score, "0%d", this->playerScore);
     notoSans.drawString(score, (ofGetWidth() / 4), 100);
@@ -32,6 +33,7 @@ void Paddle::playerPrintScore() {
 
 void Paddle::opponentPrintScore() {
   char score[255];
+  ofSetColor(255, 255, 255);
   if (this->opponentScore < 10) {
    sprintf(score, "0%d", this->opponentScore);
    notoSans.drawString(score, (ofGetWidth() - ((ofGetWidth() / 4) + 60)), 100);
@@ -159,10 +161,12 @@ void Paddle::point(Ball* ball) {
     ball->center();
     ball->soundPlayerScore();
     this->playerScore++;
+    this->serveChange(ball);
   } else if (ball->getX() <= 0) {
     ball->center();
     ball->soundOpponentScore();
     this->opponentScore++;
+    this->serveChange(ball);
   }
 }
 
@@ -173,10 +177,7 @@ void Paddle::serveChange(Ball* ball) {
 }
 
 void Paddle::gameOver() {
-//  if (this->playerScore + this->opponentScore == 20) {
-//  }
 }
 
 void Paddle::gamePoint() {
-
 }

@@ -22,6 +22,8 @@ class Ball {
     void serve();
     void serveChange();
 
+    bool test();
+
   private:
     ofVec2f position;
     float speed;
