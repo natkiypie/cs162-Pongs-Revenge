@@ -16,7 +16,6 @@ void ofApp::update() {
   paddle->opponentInPossession(ball);
   paddle->collisionInitialize(ball);
   paddle->point(ball);
-//  paddle->serveChange(ball);
 
   ball->move();
   ball->bounceWall();
@@ -32,9 +31,15 @@ void ofApp::draw() {
   paddle->draw();
   ball->draw();
 
+  //testOne
   ofSetColor(255, 255, 255);
-  ofDrawBitmapString("Serve: ", 40, (ofGetHeight() - 40));
-  ofDrawBitmapString(ofToString(ball->test()), 40, (ofGetHeight() - 20));
+  ofDrawBitmapString("Total: ", 20, (ofGetHeight() - 20));
+  ofDrawBitmapString(ofToString(paddle->testOne()), 80, (ofGetHeight() - 20));
+
+  //testTwo
+  ofSetColor(255, 255, 255);
+  ofDrawBitmapString("Modulus: ", 100, (ofGetHeight() - 20));
+  ofDrawBitmapString(ofToString(paddle->testTwo()), 180, (ofGetHeight() - 20));
 }
 
 void ofApp::keyPressed(int key) {
@@ -55,6 +60,7 @@ void ofApp::keyReleased(int key) {
 
 void ofApp::halfCourt(int y) {
   ofSetLineWidth(4);
+  ofSetColor(255, 255, 255);
   ofDrawLine((ofGetWidth() / 2), y, (ofGetWidth() / 2), (y + 8));
 }
 

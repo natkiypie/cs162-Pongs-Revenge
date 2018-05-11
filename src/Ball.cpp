@@ -1,18 +1,18 @@
 #include "Ball.h"
 
-static const int COUNT_VALUE = 50;
+static const int COUNT = 50;
 
 Ball::Ball() {
   this->position = ofVec2f((ofGetWidth()/2), (ofGetHeight()/2));
-  this->speed = 16;
+  this->speed = 10;
   this->direction = 0;
   this->velocity = ofVec2f(this->speed, this->direction);
   this->width = 10;
   this->height = 10;
   this->color = ofColor(255, 255, 255);
-  this->playerServe = true;
-  this->count = COUNT_VALUE;
+  this->count = COUNT;
   this->countStart = false;
+  this->serve = true;
 }
 
 void Ball::soundLoad() {
@@ -78,40 +78,53 @@ ofRectangle Ball::getBoundingBox() {
   return rect;
 }
 
+void Ball::setup() {
+  this->color = ofColor(255, 255, 255, 0);
+  this->position = ofVec2f((ofGetWidth()/2), (ofGetHeight()/2));
+  this->countStart = true;
+}
+
 void Ball::countDown() {
   if (this->countStart == true) {
     this->count--;
     if (this->count <= 0) {
       this->countStart = false;
-      this->count = COUNT_VALUE;
+      this->count = COUNT;
     }
   }
 }
 
-void Ball::center() {
+void Ball::setServe() {
+  if (this->serve == true) {
+    this->serve = false;
+  } else if (this->serve == false) {
+    this->serve = true;
+  }
+}
+
+void Ball::changeServe() {
+  if (this->serve == true) {
+    this->setPlayerServe();
+  } else if (this->serve == false) {
+    this->setOpponentServe();
+  }
+}
+
+void Ball::setPlayerServe() {
+  this->velocity = ofVec2f(this->speed, ofRandom(-3, 3));
+}
+
+void Ball::setOpponentServe() {
+  this->velocity = ofVec2f(this->speed, ofRandom(-3, 3));
+  this->velocity *= -1;
+}
+
+void Ball::stop() {
   this->position = ofVec2f((ofGetWidth()/2), (ofGetHeight()/2));
-  this->serve();
+  this->velocity *= 0;
 }
 
-void Ball::serve() {
-  this->color = ofColor(255, 255, 255, 0);
-  this->countStart = true;
-  if (playerServe == true) {
-    this->velocity = ofVec2f(this->speed, ofRandom(-3, 3));
-  } else if (playerServe == false) {
-    this->velocity = ofVec2f(this->speed, ofRandom(-3, 3));
-    this->velocity *= -1;
-  }
+bool Ball::testOne() {
+  return this->serve;
 }
 
-void Ball::serveChange() {
-  if (playerServe == true) {
-    playerServe = false;
-  } else if (playerServe == false) {
-    playerServe = true;
-  }
-}
-
-bool Ball::test() {
-  return this->playerServe;
-}

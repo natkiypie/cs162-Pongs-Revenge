@@ -158,26 +158,49 @@ void Paddle::collision(Ball* ball, float r, int n, float s) {
 
 void Paddle::point(Ball* ball) {
   if (ball->getX() >= ofGetWidth()) {
-    ball->center();
     ball->soundPlayerScore();
     this->playerScore++;
-    this->serveChange(ball);
+    ball->setup();
+    this->setServe(ball);
+    ball->changeServe();
   } else if (ball->getX() <= 0) {
-    ball->center();
     ball->soundOpponentScore();
     this->opponentScore++;
-    this->serveChange(ball);
+    ball->setup();
+    this->setServe(ball);
+    ball->changeServe();
   }
 }
 
-void Paddle::serveChange(Ball* ball) {
-  if ((this->playerScore + this->opponentScore) % 5 == 4) {
-    ball->serveChange();
+void Paddle::setServe(Ball* ball) {
+  if ((this->playerScore + this->opponentScore) % 5 == 0) {
+    ball->setServe();
   }
 }
 
-void Paddle::gameOver() {
+//void Paddle::gameEnd(Ball* ball) {
+//  if (this->playerScore == 5 || this->opponentScore == 5) {
+//    if (this->playerScore - this->opponentScore >= 2 || this->opponentScore - this->playerScore >= 2) {
+//      this->gameOver(ball);
+//    } else {
+//      this->gamePoint(ball);
+//    }
+//  }
+//}
+//
+//void Paddle::gamePoint(Ball* ball) {
+//}
+//
+//void Paddle::gameOver(Ball* ball) {
+//  this->color = ofColor(255, 0, 0);
+//  ball->stop();
+//}
+
+int Paddle::testOne() {
+  return (this->playerScore + this->opponentScore);
 }
 
-void Paddle::gamePoint() {
+float Paddle::testTwo() {
+  return ((this->playerScore + this->opponentScore) % 5);
 }
+

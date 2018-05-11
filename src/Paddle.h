@@ -24,10 +24,14 @@ class Paddle {
     void collisionInitialize(Ball* ball);
     void collision(Ball* ball, float r, int n, float s);
     void point(Ball* ball);
-    void serveChange(Ball* ball);
+    void setServe(Ball* ball);
 
-    void gameOver();
-    void gamePoint();
+    void gameEnd(Ball* ball);
+    void gameOver(Ball* ball);
+    void gamePoint(Ball* ball);
+
+    int testOne();
+    float testTwo();
 
   private:
     ofVec2f playerPosition;

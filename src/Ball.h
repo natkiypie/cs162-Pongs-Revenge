@@ -17,12 +17,15 @@ class Ball {
     float getX();
     float getY();
     ofRectangle getBoundingBox();
+    void setup();
     void countDown();
-    void center();
-    void serve();
-    void serveChange();
+    void setServe();
+    void changeServe();
+    void setPlayerServe();
+    void setOpponentServe();
 
-    bool test();
+    void stop();
+    bool testOne();
 
   private:
     ofVec2f position;
@@ -33,7 +36,7 @@ class Ball {
     int height;
     ofColor color;
     ofSoundPlayer player, opponent, wall, playerScore, opponentScore, gameLose, gameWin;
-    bool playerServe;
     int count;
     bool countStart;
+    bool serve;
 };
