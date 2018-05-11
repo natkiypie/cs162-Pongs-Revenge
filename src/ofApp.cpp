@@ -31,15 +31,15 @@ void ofApp::draw() {
   paddle->draw();
   ball->draw();
 
-  //testOne
-  ofSetColor(255, 255, 255);
-  ofDrawBitmapString("Total: ", 20, (ofGetHeight() - 20));
-  ofDrawBitmapString(ofToString(paddle->testOne()), 80, (ofGetHeight() - 20));
-
-  //testTwo
-  ofSetColor(255, 255, 255);
-  ofDrawBitmapString("Modulus: ", 100, (ofGetHeight() - 20));
-  ofDrawBitmapString(ofToString(paddle->testTwo()), 180, (ofGetHeight() - 20));
+//  //testOne
+//  ofSetColor(255, 255, 255);
+//  ofDrawBitmapString("Serve: ", 20, (ofGetHeight() - 20));
+//  ofDrawBitmapString(ofToString(ball->testOne()), 80, (ofGetHeight() - 20));
+//
+//  //testTwo
+//  ofSetColor(255, 255, 255);
+//  ofDrawBitmapString("Modulus: ", 100, (ofGetHeight() - 20));
+//  ofDrawBitmapString(ofToString(paddle->testTwo()), 180, (ofGetHeight() - 20));
 }
 
 void ofApp::keyPressed(int key) {

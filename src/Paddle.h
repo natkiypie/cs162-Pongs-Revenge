@@ -25,10 +25,9 @@ class Paddle {
     void collision(Ball* ball, float r, int n, float s);
     void point(Ball* ball);
     void setServe(Ball* ball);
-
     void gameEnd(Ball* ball);
-    void gameOver(Ball* ball);
     void gamePoint(Ball* ball);
+    void gameOver(Ball* ball);
 
     int testOne();
     float testTwo();
