@@ -5,7 +5,7 @@ Menu::Menu() {
   this->height = 65;
   this->barX = (ofGetWidth() / 2);
   this->barY = (((ofGetHeight() / 2) + this->height));
-  this->titleX = 180;
+  this->titleX = 240;
   this->titleY = (ofGetHeight() / 2);
   this->playX = ((ofGetWidth() / 2) - 30);
   this->playY = ((((ofGetHeight() / 2) + this->height)) + 15);

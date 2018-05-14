@@ -44,5 +44,5 @@ class Paddle {
     int opponentScore;
     bool gameOver;
     ofColor color;
-    ofTrueTypeFont notoSans;
+    ofTrueTypeFont vanadine;
 };

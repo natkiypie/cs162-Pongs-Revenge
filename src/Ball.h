@@ -6,7 +6,7 @@ class Ball {
 
   public:
     Ball();
-    void soundLoad();
+    void loadSound();
     void draw();
     void move();
     void bounceWall();

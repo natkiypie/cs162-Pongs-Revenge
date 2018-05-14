@@ -1,15 +1,20 @@
 #include "ofApp.h"
 #include "Menu.h"
+#include "Instruct.h"
 #include "Paddle.h"
 #include "Ball.h"
 
 void ofApp::setup() {
+  aka47.load("aka47.mp3");
+  aka47.play();
   menu = new Menu();
+  instruct = new Instruct();
   paddle = new Paddle();
   ball = new Ball();
   menu->loadFont();
+  instruct->loadFont();
   paddle->loadFont();
-  ball->soundLoad();
+  ball->loadSound();
   ofSetBackgroundColor(0, 0, 0);
 }
 
@@ -20,10 +25,12 @@ void ofApp::update() {
 }
 
 void ofApp::draw() {
-  if (this->state == play) {
-    this->playDraw();
-  } else if (this->state == title) {
+  if (this->state == title) {
     this->menuDraw();
+  } else if (this->state == instructions) {
+    this->instructDraw();
+  } else if (this->state == play) {
+    this->playDraw();
   }
 }
 
@@ -31,10 +38,12 @@ void ofApp::keyPressed(int key) {
 
   if (menu->getSelection() == 0) {
     if (key == OF_KEY_RETURN) {
+      aka47.stop();
       this->state = play;
     } 
   } else if (menu->getSelection() == 1) {
     if (key == OF_KEY_RETURN) {
+      aka47.stop();
       this->state = instructions;
     }
   }
@@ -51,6 +60,12 @@ void ofApp::keyPressed(int key) {
     } else if (key == OF_KEY_DOWN) {
       paddle->playerDown();
     } else if (key == 'q') {
+      aka47.play();
+      this->state = title;
+    }
+  } else if (this->state == instructions) {
+    if (key == 'r') {
+      aka47.play();
       this->state = title;
     }
   }
@@ -71,6 +86,10 @@ void ofApp::menuDraw() {
   menu->printInstructions();
 }
 
+void ofApp::instructDraw() {
+  instruct->printInstruct();
+}
+
 void ofApp::playUpdate() {
   paddle->move();
   paddle->boundry();
@@ -81,6 +100,7 @@ void ofApp::playUpdate() {
   ball->bounceWall();
   ball->countDown();
   if (paddle->getGameOver() == true) {
+    aka47.play();
     this->state = title;
   }
 }

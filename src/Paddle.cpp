@@ -8,7 +8,7 @@ Paddle::Paddle() {
   this->playerVelocity = 0;
   this->opponentVelocity = 0;
   this->acceleration = 6;
-  this->speed = 8;
+  this->speed = 6;
   this->opponentOffset = 3;
   this->playerScore = 0;
   this->opponentScore = 0;
@@ -17,7 +17,7 @@ Paddle::Paddle() {
 }
 
 void Paddle::loadFont() {
-  notoSans.load("notoSans.ttf", 40, true, true, true);
+  vanadine.load("vanadine.ttf", 40, true, true, true);
 }
 
 void Paddle::playerPrintScore() {
@@ -25,10 +25,10 @@ void Paddle::playerPrintScore() {
   ofSetColor(255, 255, 255);
   if (this->playerScore < 10) {
     sprintf(score, "0%d", this->playerScore);
-    notoSans.drawString(score, (ofGetWidth() / 4), 100);
+    vanadine.drawString(score, (ofGetWidth() / 4), 100);
   } else {
     sprintf(score, "%d", this->playerScore);
-    notoSans.drawString(score, (ofGetWidth() / 4), 100);
+    vanadine.drawString(score, (ofGetWidth() / 4), 100);
   }
 }
 
@@ -37,10 +37,10 @@ void Paddle::opponentPrintScore() {
   ofSetColor(255, 255, 255);
   if (this->opponentScore < 10) {
    sprintf(score, "0%d", this->opponentScore);
-   notoSans.drawString(score, (ofGetWidth() - ((ofGetWidth() / 4) + 60)), 100);
+   vanadine.drawString(score, (ofGetWidth() - ((ofGetWidth() / 4) + 60)), 100);
   } else {
    sprintf(score, "%d", this->opponentScore);
-   notoSans.drawString(score, (ofGetWidth() - ((ofGetWidth() / 4) + 60)), 100);
+   vanadine.drawString(score, (ofGetWidth() - ((ofGetWidth() / 4) + 60)), 100);
   }
 }
 

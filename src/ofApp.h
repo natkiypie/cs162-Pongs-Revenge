@@ -1,6 +1,7 @@
 #pragma once
 #include "ofMain.h"
 #include "Menu.h"
+#include "Instruct.h"
 #include "Paddle.h"
 #include "Ball.h"
 
@@ -10,6 +11,7 @@ class ofApp : public ofBaseApp {
 
 	public:
     Menu* menu;
+    Instruct* instruct;
     Paddle* paddle;
     Ball* ball;
 		void setup();
@@ -17,14 +19,14 @@ class ofApp : public ofBaseApp {
 		void draw();
 		void keyPressed(int key);
 		void keyReleased(int key);
-    void halfCourt(int y);
-
     void menuDraw();
-
+    void instructDraw();
     void playUpdate();
     void playDraw();
+    void halfCourt(int y);
 
   private:
     GameState state;
+    ofSoundPlayer aka47;
 };
 

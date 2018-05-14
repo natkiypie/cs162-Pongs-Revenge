@@ -15,7 +15,7 @@ Ball::Ball() {
   this->serve = true;
 }
 
-void Ball::soundLoad() {
+void Ball::loadSound() {
   player.load("ping.wav");
   opponent.load("pong.wav");
   wall.load("blip.wav");
