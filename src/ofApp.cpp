@@ -14,17 +14,16 @@ void ofApp::setup() {
 }
 
 void ofApp::update() {
-  this->playUpdate();
+  if (this->state == play) {
+    this->playUpdate();
+  }
 }
 
 void ofApp::draw() {
   if (this->state == play) {
     this->playDraw();
   } else if (this->state == title) {
-    menu->printTitle();
-    menu->barDraw();
-    menu->printPlay();
-    menu->printInstructions();
+    this->menuDraw();
   }
 }
 
@@ -51,6 +50,8 @@ void ofApp::keyPressed(int key) {
       paddle->playerUp();
     } else if (key == OF_KEY_DOWN) {
       paddle->playerDown();
+    } else if (key == 'q') {
+      this->state = title;
     }
   }
 }
@@ -61,6 +62,13 @@ void ofApp::keyReleased(int key) {
   } else if (key == OF_KEY_DOWN) {
     paddle->playerRelease();
   }
+}
+
+void ofApp::menuDraw() {
+  menu->printTitle();
+  menu->barDraw();
+  menu->printPlay();
+  menu->printInstructions();
 }
 
 void ofApp::playUpdate() {

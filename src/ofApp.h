@@ -19,6 +19,8 @@ class ofApp : public ofBaseApp {
 		void keyReleased(int key);
     void halfCourt(int y);
 
+    void menuDraw();
+
     void playUpdate();
     void playDraw();
 
