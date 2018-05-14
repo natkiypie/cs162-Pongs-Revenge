@@ -118,13 +118,3 @@ void Ball::setOpponentServe() {
   this->velocity = ofVec2f(this->speed, ofRandom(-3, 3));
   this->velocity *= -1;
 }
-
-void Ball::stop() {
-  this->position = ofVec2f((ofGetWidth()/2), (ofGetHeight()/2));
-  this->velocity *= 0;
-}
-
-bool Ball::testOne() {
-  return this->serve;
-}
-

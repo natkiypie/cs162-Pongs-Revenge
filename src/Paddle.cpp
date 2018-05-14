@@ -12,6 +12,7 @@ Paddle::Paddle() {
   this->opponentOffset = 3;
   this->playerScore = 0;
   this->opponentScore = 0;
+  this->gameOver = false;
   this->color = ofColor(255, 255, 255);
 }
 
@@ -183,7 +184,7 @@ void Paddle::setServe(Ball* ball) {
 void Paddle::gameEnd(Ball* ball) {
   if (this->playerScore >= 11 || this->opponentScore >= 11) {
     if (this->playerScore - this->opponentScore >= 2 || this->opponentScore - this->playerScore >= 2) {
-      this->gameOver(ball);
+      this->setGameOver();
     } else {
       this->gamePoint(ball);
     }
@@ -196,20 +197,14 @@ void Paddle::gamePoint(Ball* ball) {
   } else if (this->opponentScore <= this->playerScore) {
     ball->setOpponentServe();
   } else if (this->playerScore - this->opponentScore >= 2 || this->opponentScore - this->playerScore >= 2) {
-    this->gameOver(ball);
+    this->setGameOver();
   }
 }
 
-void Paddle::gameOver(Ball* ball) {
-  this->color = ofColor(255, 0, 0);
-  ball->stop();
+bool Paddle::getGameOver() {
+  return this->gameOver;
 }
 
-int Paddle::testOne() {
-  return (this->playerScore + this->opponentScore);
+void Paddle::setGameOver() {
+  this->gameOver = true;
 }
-
-float Paddle::testTwo() {
-  return ((this->playerScore + this->opponentScore) % 5);
-}
-

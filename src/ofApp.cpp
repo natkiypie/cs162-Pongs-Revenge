@@ -80,6 +80,9 @@ void ofApp::playUpdate() {
   ball->move();
   ball->bounceWall();
   ball->countDown();
+  if (paddle->getGameOver() == true) {
+    this->state = title;
+  }
 }
 
 void ofApp::playDraw() {

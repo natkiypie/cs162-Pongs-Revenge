@@ -24,9 +24,6 @@ class Ball {
     void setPlayerServe();
     void setOpponentServe();
 
-    void stop();
-    bool testOne();
-
   private:
     ofVec2f position;
     float speed;

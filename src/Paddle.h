@@ -27,10 +27,8 @@ class Paddle {
     void setServe(Ball* ball);
     void gameEnd(Ball* ball);
     void gamePoint(Ball* ball);
-    void gameOver(Ball* ball);
-
-    int testOne();
-    float testTwo();
+    bool getGameOver();
+    void setGameOver();
 
   private:
     ofVec2f playerPosition;
@@ -44,6 +42,7 @@ class Paddle {
     int opponentOffset;
     int playerScore;
     int opponentScore;
+    bool gameOver;
     ofColor color;
     ofTrueTypeFont notoSans;
 };
