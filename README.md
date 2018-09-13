@@ -1,2 +1,2 @@
 # cs162-PongsRevenge
-Introduction to C++ Midterm Project
+Midterm Project written in C++ using OpenFrameworks
